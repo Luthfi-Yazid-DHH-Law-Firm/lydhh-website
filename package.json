@@ -9,16 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
     "@sanity/icons": "^3.7.0",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.87.1",
+    "class-variance-authority": "^0.7.1",
+    "embla-carousel-react": "^8.6.0",
     "motion": "^12.9.4",
     "next": "15.3.1",
     "next-sanity": "^9.10.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.56.3",
     "sanity": "^3.87.1",
-    "styled-components": "^6.1.17"
+    "styled-components": "^6.1.17",
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
