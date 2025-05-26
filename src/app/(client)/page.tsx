@@ -9,13 +9,11 @@ export default function Home() {
   return (
     <>
       <HomepageHero />
-      <main className="w-full">
-        <HomepageAbout />
-        <HomepageService />
-        <HomepageTeam />
-        <HomepageContact />
-        <HomepageArticles />
-      </main>
+      <HomepageAbout />
+      <HomepageService />
+      <HomepageTeam />
+      <HomepageContact />
+      <HomepageArticles />
     </>
   );
 }

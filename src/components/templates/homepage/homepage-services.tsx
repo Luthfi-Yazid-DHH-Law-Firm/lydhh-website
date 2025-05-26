@@ -1,6 +1,6 @@
 import { BookOpenIcon, BriefcaseIcon, DocumentTextIcon, GunIcon, HomeIcon, ScaleIcon } from "@/assets/service-icons";
 import LinkButton from "@/components/ui/link";
-import ServiceCard from "@/components/features/homepage/home-service-card";
+import ServiceCard from "@/components/composites/image-card";
 import { ArrowRightIcon } from "@sanity/icons";
 
 const HomepageService = () => {

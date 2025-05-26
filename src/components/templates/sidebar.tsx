@@ -21,7 +21,7 @@ const Sidebar = () => {
         size="sm"
       >
         <Sheet.Content className="space-y-1 h-full flex flex-col">
-          <Link href="/about" className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors">
+          <Link href="/about-us" className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors">
             About
           </Link>
           <Link href="/team" className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors">

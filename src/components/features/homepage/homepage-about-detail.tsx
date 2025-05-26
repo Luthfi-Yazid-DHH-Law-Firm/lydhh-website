@@ -21,7 +21,7 @@ const HomepageAboutDetail = () => {
         practical services in today&apos;s evolving legal and commercial
         landscape.
       </p>
-      <LinkButton href="/">LEARN MORE</LinkButton>
+      <LinkButton href="/about-us">LEARN MORE</LinkButton>
     </AnimationWrapper>
   );
 };

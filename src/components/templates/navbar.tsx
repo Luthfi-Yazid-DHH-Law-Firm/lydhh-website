@@ -15,8 +15,9 @@ const Navbar = () => {
   const [onTop, setOnTop] = useState<boolean>(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
+    
     const prev = scrollY.getPrevious();
-    if (latest < 50) {
+    if (latest < 50 || !latest) {
       setOnTop(true);
     } else {
       setOnTop(false);
@@ -53,7 +54,7 @@ const Navbar = () => {
 
         {/* hover link */}
         <div className="lg:flex items-center gap-10 hidden">
-          <HoverLink href="/about" classname="text-white">
+          <HoverLink href="/about-us" classname="text-white">
             About
           </HoverLink>
           <HoverLink href="/team" classname="text-white">
