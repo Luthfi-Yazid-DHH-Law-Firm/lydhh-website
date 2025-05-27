@@ -3,7 +3,7 @@ import HeroSmall from "@/components/templates/hero-small";
 import HomepageArticles from "@/components/templates/homepage/homepage-articles";
 import HomepageContact from "@/components/templates/homepage/homepage-contact";
 
-export default function page() {
+export default function ContactPage() {
   return (
     <>
         <HeroSmall />
