@@ -46,7 +46,7 @@ const Footer = () => {
             Our Team
           </Link>
           <Link
-            href="/services"
+            href="/our-services"
             className=""
           >
             Services
@@ -86,7 +86,7 @@ const Footer = () => {
             Our Team
           </Link>
           <Link
-            href="/services"
+            href="/our-services"
             className=""
           >
             Services

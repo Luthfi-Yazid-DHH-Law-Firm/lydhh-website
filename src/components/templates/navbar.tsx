@@ -61,7 +61,7 @@ const Navbar = () => {
             Our Team
           </HoverLink>
           <HoverLink
-            href="/services"
+            href="/our-services"
             FlyOutContent={<FlyOutContent flyOutList={servicesSubMenu} />}
             classname="text-white"
           >

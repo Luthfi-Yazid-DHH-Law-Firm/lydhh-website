@@ -27,7 +27,7 @@ const Sidebar = () => {
           <Link href="/team" className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors">
             Our Team
           </Link>
-          <Link href="/services" className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors">
+          <Link href="/our-services" className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors">
             Services
           </Link>
           <Link href="/articles" className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors">
