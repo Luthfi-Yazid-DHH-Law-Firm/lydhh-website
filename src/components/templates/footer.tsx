@@ -31,7 +31,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 text-[#999999] md:pl-8">
+        <div className="flex flex-col gap-3 text-[#999999] lg:pl-8">
           <h5 className="text-white text-xl font-medium">Quick Links</h5>
           <Link
             href="/about-us"

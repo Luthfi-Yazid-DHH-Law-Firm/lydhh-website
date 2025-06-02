@@ -20,7 +20,7 @@ const ServicesList = () => {
   ];
 
   return (
-    <section className="w-full flex items-center justify-center py-20 px-8 lg:px-16 bg-[#f4f4f4] bg-cover bg-center bg-no-repeat text-black">
+    <section className="w-full flex items-center justify-center py-20 px-8 lg:px-16 bg-[#f4f4f4] text-black">
       <div className="2xl:w-[1440px] w-full">
         {/* Section Header */}
         <div className="mb-16">
