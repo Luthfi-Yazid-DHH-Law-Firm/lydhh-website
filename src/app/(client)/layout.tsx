@@ -11,7 +11,7 @@ const poppins = Poppins({
 
 const ClientLayout = ({ children }: { children: ReactNode }) => {
     return (
-        <div className={`min-h-screen w-full relative ${poppins.className}`}>
+        <div className={`min-h-screen w-full relative bg-[#f4f4f4] ${poppins.className}`}>
             <Navbar />
             { children }
             <Footer />

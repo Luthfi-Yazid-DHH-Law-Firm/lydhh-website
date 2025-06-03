@@ -67,15 +67,13 @@ const Navbar = () => {
           >
             Services
           </HoverLink>
-          <HoverLink href="/contact" classname="text-white">
-            Contact
-          </HoverLink>
           <HoverLink href="/articles" classname="text-white">
             Articles
           </HoverLink>
-          <HoverLink href="/gallery" classname="text-white">
-            Gallery
+          <HoverLink href="/contact" classname="text-white">
+            Contact
           </HoverLink>
+          
         </div>
 
         <Sidebar />
