@@ -8,11 +8,12 @@ const options = { next: { revalidate: 60 } };
 export default async function ServiceDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const resolvedParams = await params;
   const service = await client.fetch(
     SERVICE_QUERY,
-    params = await params,
+    resolvedParams,
     options
   );
   console.log(service);

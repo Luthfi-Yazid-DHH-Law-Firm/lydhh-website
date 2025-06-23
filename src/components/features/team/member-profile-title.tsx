@@ -4,6 +4,7 @@ const playFairDisplay = Playfair_Display({
   weight: ["700"],
   style: ["italic"],
   subsets: ["latin"],
+  preload: false,
 });
 
 const MemberProfileTitle = () => {

@@ -9,11 +9,12 @@ const options = { next: { revalidate: 60 } };
 export default async function ArticleDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const resolvedParams = await params;
   const article = await client.fetch(
     ARTICLE_QUERY,
-    (params = await params),
+    resolvedParams,
     options
   );
 
