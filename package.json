@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predev": "npm run typegen",
+    "prebuild": "npm run typegen",
+    "typegen": "sanity schema extract --path=./src/sanity/extract.json && sanity typegen generate"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -21,6 +24,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.56.3",
+    "react-is": "^19.1.0",
     "sanity": "^3.87.1",
     "styled-components": "^6.1.17",
     "zod": "^3.24.4"
@@ -28,6 +32,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

@@ -1,16 +1,50 @@
-import Image from 'next/image'
-import React from 'react'
+import { urlFor } from "@/sanity/lib/image";
+import {
+  internalGroqTypeReferenceTo,
+  SanityImageCrop,
+  SanityImageHotspot,
+} from "@/sanity/types";
+import Image from "next/image";
+import React, { FC } from "react";
 
-const MemberProfileImage = () => {
-  return (
-    <div className='w-full md:max-w-[35%] 2xl:max-w-1/'>
-        <Image src="/founder-image.webp" alt='member-image' width={320} height={384} className='w-full h-96 object-cover' />
-        <div className='w-full flex flex-col items-center justify-center p-5 bg-linear-to-r from-[#D5AA6D] to-[#9B6F45] text-white text-center'>
-            <h3 className='text-xl font-medium'>Haekal Abdalla Jouf</h3>
-            <p className='text-sm'>Civil Lawyer</p>
-        </div>
-    </div>
-  )
+interface MemberProfileImageProps {
+  image:
+    | {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+      }
+    | null
+    | undefined;
+    name?: string | null;
+    position?: string | null;
 }
 
-export default MemberProfileImage
+const MemberProfileImage: FC<MemberProfileImageProps> = ({ image, name, position }) => {
+  return (
+    <div className="w-full md:w-80">
+      {image ? (
+        <Image
+          src={urlFor(image).auto("format").url()}
+          alt="member-image"
+          width={320}
+          height={384}
+          className="w-full h-96 object-cover"
+        />
+      ) : null}
+      <div className="w-full flex flex-col items-center justify-center p-5 bg-linear-to-r from-[#D5AA6D] to-[#9B6F45] text-white text-center">
+        <h3 className="text-xl font-medium">{ name }</h3>
+        <p className="text-sm">{ position }</p>
+      </div>
+    </div>
+  );
+};
+
+export default MemberProfileImage;

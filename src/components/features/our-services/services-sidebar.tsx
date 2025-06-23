@@ -1,24 +1,21 @@
 import { PhoneIcon } from "@/assets/service-icons";
 import ServicesSidebarItems from "@/components/composites/our-services/services-sidebar-items";
+import { client } from "@/sanity/lib/client";
+import { ALL_SERVICES_QUERY } from "@/sanity/lib/queries";
 import { EnvelopeIcon, MarkerIcon } from "@sanity/icons";
 
-const ServicesSidebar = () => {
-  const services = [
-    { title: "Family Law", href: "/our-services/family-law" },
-    { title: "Civil Law", href: "/our-services/civil-law" },
-    { title: "Criminal Law", href: "/our-services/criminal-law" },
-    { title: "Business Law", href: "/our-services/business-law" },
-    { title: "Education Law", href: "/our-services/education-law" },
-    { title: "Real Estate law", href: "/our-services/real-estate-law" },
-  ];
+const options = { next: { revalidate: 60 } };
+
+const ServicesSidebar = async () => {
+  const services = await client.fetch(ALL_SERVICES_QUERY, {}, options);
   return (
     <div className="w-full px-3 space-y-8">
       <div className="w-full flex flex-col gap-2">
         {services.map((service, i) => (
           <ServicesSidebarItems
             key={i}
-            label={service.title}
-            href={service.href}
+            label={service.name || ""}
+            href={service.slug?.current || ""}
           />
         ))}
       </div>

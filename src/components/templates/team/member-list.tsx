@@ -1,7 +1,11 @@
-import MemberCard from "@/components/features/member-card";
-import { MemberInfo } from "@/constants/member-info";
+import MemberCard from "@/components/composites/member-card";
+import { client } from "@/sanity/lib/client";
+import { MEMBERS_NO_FOUNDER_QUERY } from "@/sanity/lib/queries";
 
-const MemberList = () => {
+const options = { next: { revalidate: 60 } };
+
+const MemberList = async () => {
+  const members = await client.fetch(MEMBERS_NO_FOUNDER_QUERY, {}, options );
   return (
     <section className="w-full flex items-center justify-center py-20 px-8 lg:px-16 bg-black text-white">
       <div className="2xl:w-[1440px] w-full">
@@ -24,8 +28,8 @@ const MemberList = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {
-                MemberInfo.map((member, i) => (
-                    <MemberCard key={i} name={member.name} position={member.position} />
+                members.map((member, i) => (
+                    <MemberCard key={i} member={member}/>
                 ))
             }
         </div>

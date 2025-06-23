@@ -37,7 +37,7 @@ const HeroSmall = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <h1 className="text-4xl font-bold text-white">{currentPageTitle}</h1>
+      <h1 className="text-4xl font-bold text-white text-center">{currentPageTitle}</h1>
       <Breadcrumb items={breadcrumbItems} className="text-white" maxItems={3} />
     </div>
   );

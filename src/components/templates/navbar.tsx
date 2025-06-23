@@ -1,13 +1,12 @@
 "use client";
 
-import { servicesSubMenu } from "@/constants/navbar-submenu";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
-import FlyOutContent from "@/components/ui/flyout-content";
 import HoverLink from "@/components/ui/hover-link";
 import Image from "next/image";
 import Link from "next/link";
 import Sidebar from "./sidebar";
+import ServicesFlyOut from "@/components/composites/services-fly-out";
 
 const Navbar = () => {
   const { scrollY } = useScroll();
@@ -62,7 +61,7 @@ const Navbar = () => {
           </HoverLink>
           <HoverLink
             href="/our-services"
-            FlyOutContent={<FlyOutContent flyOutList={servicesSubMenu} />}
+            FlyOutContent={<ServicesFlyOut />}
             classname="text-white"
           >
             Services

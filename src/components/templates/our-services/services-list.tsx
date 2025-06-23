@@ -1,23 +1,11 @@
-import {
-  BookOpenIcon,
-  BriefcaseIcon,
-  DocumentTextIcon,
-  GunIcon,
-  HomeIcon,
-  ScaleIcon,
-} from "@/assets/service-icons";
-import ServiceCard from "@/components/composites/image-card";
-import { ArrowRightIcon } from "@sanity/icons";
+import ServiceCard from "@/components/composites/service-card";
+import { client } from "@/sanity/lib/client";
+import { SERVICES_QUERY } from "@/sanity/lib/queries";
 
-const ServicesList = () => {
-  const services = [
-    { title: "Family Law", icon: BriefcaseIcon },
-    { title: "Civil Law", icon: ScaleIcon },
-    { title: "Criminal Law", icon: GunIcon },
-    { title: "Business Law", icon: DocumentTextIcon },
-    { title: "Education Law", icon: BookOpenIcon },
-    { title: "Real Estate law", icon: HomeIcon },
-  ];
+const options = { next: { revalidate: 60 } };
+
+const ServicesList = async () => {
+  const services = await client.fetch(SERVICES_QUERY, {}, options);
 
   return (
     <section className="w-full flex items-center justify-center py-20 px-8 lg:px-16 text-black">
@@ -43,12 +31,7 @@ const ServicesList = () => {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {services.map((service, index) => (
-            <ServiceCard key={index} index={index} href="/">
-              <div className="w-full flex items-center justify-between text-black">
-                <p className="text-lg font-semibold">{service.title}</p>
-                <ArrowRightIcon className="text-xl font-semibold" />
-              </div>
-            </ServiceCard>
+            <ServiceCard key={index} index={index} service={service} textColor="text-black"/>
           ))}
         </div>
       </div>

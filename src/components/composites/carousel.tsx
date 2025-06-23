@@ -1,5 +1,6 @@
 "use client";
 
+import React, { ReactNode } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { EmblaOptionsType } from "embla-carousel";
 import {
@@ -12,13 +13,19 @@ import LinkButton from "@/components/ui/link";
 import AnimationWrapper from "@/components/wrappers/animation-wrapper";
 import { easeIn } from "motion";
 
-type EmblaCarouselProps = {
-  slides: number[];
+type CarouselProps = {
+  children: ReactNode;
   viewAllHref: string;
   options?: EmblaOptionsType;
+  slideClassName?: string; // Optional prop to customize slide wrapper styles
 };
 
-const EmblaCarousel: React.FC<EmblaCarouselProps> = ({ slides, viewAllHref, options }) => {
+const Carousel: React.FC<CarouselProps> = ({ 
+  children, 
+  viewAllHref, 
+  options,
+  slideClassName = "flex-[0_0_75%] md:flex-[0_0_40%] lg:flex-[0_0_33.333%] min-w-0 pl-4" 
+}) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   const {
@@ -59,15 +66,13 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({ slides, viewAllHref, opti
         {/* Container */}
         <div className="flex -ml-4 touch-pan-y">
           {/* Slides */}
-          {slides.map((index) => (
+          {React.Children.map(children, (child, index) => (
             <div
-              className="flex-[0_0_75%] md:flex-[0_0_40%] lg:flex-[0_0_33.333%] min-w-0 pl-4"
+              className={slideClassName}
               key={index}
               style={{ transform: "translate3d(0, 0, 0)" }}
             >
-              <div className="flex items-center justify-center h-76 text-4xl font-semibold rounded-3xl border-2 border-gray-300 select-none">
-                {index + 1}
-              </div>
+              {child}
             </div>
           ))}
         </div>
@@ -76,4 +81,4 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({ slides, viewAllHref, opti
   );
 };
 
-export default EmblaCarousel;
+export default Carousel;

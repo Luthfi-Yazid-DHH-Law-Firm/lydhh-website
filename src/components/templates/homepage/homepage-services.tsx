@@ -1,17 +1,12 @@
-import { BookOpenIcon, BriefcaseIcon, DocumentTextIcon, GunIcon, HomeIcon, ScaleIcon } from "@/assets/service-icons";
 import LinkButton from "@/components/ui/link";
-import ServiceCard from "@/components/composites/image-card";
-import { ArrowRightIcon } from "@sanity/icons";
+import ServiceCard from "@/components/composites/service-card";
+import { client } from "@/sanity/lib/client";
+import { SERVICES_QUERY } from "@/sanity/lib/queries";
 
-const HomepageService = () => {
-  const services = [
-    { title: 'Family Law', icon: BriefcaseIcon },
-    { title: 'Civil Law', icon: ScaleIcon },
-    { title: 'Criminal Law', icon: GunIcon },
-    { title: 'Business Law', icon: DocumentTextIcon },
-    { title: 'Education Law', icon: BookOpenIcon },
-    { title: 'Real Estate law', icon: HomeIcon },
-  ];
+const options = { next: { revalidate: 60 } };
+
+const HomepageService = async () => {
+  const services = await client.fetch(SERVICES_QUERY, {}, options );
 
   return (
     <section
@@ -33,7 +28,7 @@ const HomepageService = () => {
               </h2>
             </div>
             <div className="w-1/2 h-[1px] hidden lg:block bg-[#E1BC1C]" />
-            <LinkButton href="/" underline={false} className="border p-3 text-white hover:text-[#E1BC1C] transition-colors duration-300">
+            <LinkButton href="/our-services" underline={false} className="border p-3 text-white hover:text-[#E1BC1C] transition-colors duration-300">
               Explore All
             </LinkButton>
           </div>
@@ -45,13 +40,8 @@ const HomepageService = () => {
             <ServiceCard 
               key={index}
               index={index}
-              href="/"
-            >
-              <div className="w-full flex items-center justify-between">
-                <p className="text-lg font-semibold">{service.title}</p>
-                <ArrowRightIcon className="text-xl font-semibold"/>
-              </div>
-            </ServiceCard>
+              service={service}
+            />
           ))}
         </div>
       </div>

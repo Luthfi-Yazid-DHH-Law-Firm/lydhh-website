@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FC, ReactNode, useState } from "react";
 
 interface LinkButtonProps {
@@ -17,9 +17,10 @@ const LinkButton: FC<LinkButtonProps> = ({
   underline = true,
 }) => {
   const [hover, setHover] = useState<boolean>(false);
+  const router = useRouter();
   return (
-    <Link
-      href={href}
+    <button
+      onClick={() => router.push(href)}
       className={"text-[#E1BC1C] w-fit flex flex-col " + className}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
@@ -30,7 +31,7 @@ const LinkButton: FC<LinkButtonProps> = ({
           className={`h-[2px] w-full bg-[#E1BC1C] rounded mt-1 origin-left transition-transform duration-300 ${hover ? "scale-x-100" : "scale-x-0"} `}
         />
       )}
-    </Link>
+    </button>
   );
 };
 

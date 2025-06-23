@@ -1,9 +1,14 @@
 import { PhoneIcon } from "@/assets/service-icons";
+import { client } from "@/sanity/lib/client";
+import { SERVICES_QUERY } from "@/sanity/lib/queries";
 import { EnvelopeIcon, MarkerIcon } from "@sanity/icons";
 import Image from "next/image";
 import Link from "next/link";
 
-const Footer = () => {
+const options = { next: { revalidate: 60 } };
+
+const Footer = async () => {
+  const services = await client.fetch(SERVICES_QUERY, {}, options);
   return (
     <footer className="w-full py-12 flex items-center justify-center bg-[#191514]">
       <div className="w-full 2xl:w-[1440px] px-5 md:px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 space-y-8">
@@ -67,36 +72,13 @@ const Footer = () => {
         </div>
         <div className="flex flex-col gap-3 text-[#999999]">
           <h5 className="text-white text-xl font-medium">Our Services</h5>
-          <Link
-            href="/about-us"
-            className=""
-          >
-            About
-          </Link>
-          <Link
-            href="/team"
-            className=""
-          >
-            Our Team
-          </Link>
-          <Link
-            href="/our-services"
-            className=""
-          >
-            Services
-          </Link>
-          <Link
-            href="/articles"
-            className=""
-          >
-            Articles
-          </Link>
-          <Link
-            href="/contact"
-            className=""
-          >
-            Contact Us
-          </Link>
+          {
+            services.map((service, i) => (
+              <Link key={i} href={`/our-services/${service.slug?.current}`}>
+                {service.name}
+              </Link>
+            ))
+          }
         </div>
         <div className="flex flex-col gap-3 text-[#999999] md:pl-8">
           <h5 className="text-white text-xl font-medium">Contact</h5>

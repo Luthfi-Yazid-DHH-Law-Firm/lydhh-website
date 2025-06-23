@@ -1,5 +1,5 @@
 import {UserIcon} from '@sanity/icons'
-import {defineArrayMember, defineField, defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 export const memberType = defineType({
   name: 'member',
@@ -31,14 +31,7 @@ export const memberType = defineType({
     }),
     defineField({
       name: 'bio',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
-        }),
-      ],
+      type: 'blockContent'
     }),
   ],
   preview: {
