@@ -7,6 +7,7 @@ import Link from "next/link";
 const playFair = Playfair_Display({
   weight: ["700"],
   style: "italic",
+  preload: false
 });
 
 const HomepageHeroText = () => {
