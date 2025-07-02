@@ -388,7 +388,7 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: MEMBERS_QUERY
-// Query: *[_type == "member" && defined(slug.current)][0...6]{  _id, name, slug, image, position}
+// Query: *[_type == "member" && defined(slug.current)] | order(position)[0...6]{  _id, name, slug, image, position}
 export type MEMBERS_QUERYResult = Array<{
   _id: string;
   name: string | null;
@@ -408,7 +408,7 @@ export type MEMBERS_QUERYResult = Array<{
   position: string | null;
 }>;
 // Variable: MEMBERS_NO_FOUNDER_QUERY
-// Query: *[_type == "member" && position != "Founder"]{  _id,  name,  image,  position,  slug,}
+// Query: *[_type == "member" && position != "Founder"] | order(position){  _id,  name,  image,  position,  slug,}
 export type MEMBERS_NO_FOUNDER_QUERYResult = Array<{
   _id: string;
   name: string | null;
@@ -477,9 +477,87 @@ export type MEMBER_QUERYResult = {
   position: string | null;
   slug: Slug | null;
 } | null;
+// Variable: FOUNDER_PROFILE
+// Query: *[_type == "member" && position == "Founder"][0]{  name,  image,  position,  slug,  bio}
+export type FOUNDER_PROFILEResult = {
+  name: string | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  position: string | null;
+  slug: Slug | null;
+  bio: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }> | null;
+} | null;
 // Variable: ARTICLES_QUERY
 // Query: *[_type == "article" && defined(slug.current)][0...6]{  _id, title, slug, mainImage, publishedAt, categories}
 export type ARTICLES_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  publishedAt: string | null;
+  categories: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }> | null;
+}>;
+// Variable: ARTICLES_PAGINATED_QUERY
+// Query: *[_type == "article" && defined(slug.current)][0...$end]{  _id, title, slug, mainImage, publishedAt, categories}
+export type ARTICLES_PAGINATED_QUERYResult = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
@@ -563,8 +641,11 @@ export type ARTICLE_QUERYResult = {
   slug: Slug | null;
   publishedAt: string | null;
 } | null;
+// Variable: ARTICLES_COUNT_QUERY
+// Query: count(*[_type == "article" && defined(slug.current)])
+export type ARTICLES_COUNT_QUERYResult = number;
 // Variable: SERVICES_QUERY
-// Query: *[_type == "services" && defined(slug.current)][0...6]{  _id, name, slug, image, position}
+// Query: *[_type == "services" && defined(slug.current)][0...8]{  _id, name, slug, image, position}
 export type SERVICES_QUERYResult = Array<{
   _id: string;
   name: string | null;
@@ -655,18 +736,29 @@ export type SERVICE_QUERYResult = {
   }> | null;
   slug: Slug | null;
 } | null;
+// Variable: ALL_CATEGORY_QUERIES
+// Query: *[_type == "category" && defined(slug.current)]{  _id, slug, title}
+export type ALL_CATEGORY_QUERIESResult = Array<{
+  _id: string;
+  slug: Slug | null;
+  title: string | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"member\" && defined(slug.current)][0...6]{\n  _id, name, slug, image, position\n}": MEMBERS_QUERYResult;
-    "*[_type == \"member\" && position != \"Founder\"]{\n  _id,\n  name,\n  image,\n  position,\n  slug,\n}": MEMBERS_NO_FOUNDER_QUERYResult;
+    "*[_type == \"member\" && defined(slug.current)] | order(position)[0...6]{\n  _id, name, slug, image, position\n}": MEMBERS_QUERYResult;
+    "*[_type == \"member\" && position != \"Founder\"] | order(position){\n  _id,\n  name,\n  image,\n  position,\n  slug,\n}": MEMBERS_NO_FOUNDER_QUERYResult;
     "*[_type == \"member\" && slug.current == $slug][0]{\n  bio,\n  image,\n  name,\n  position,\n  slug\n}": MEMBER_QUERYResult;
+    "*[_type == \"member\" && position == \"Founder\"][0]{\n  name,\n  image,\n  position,\n  slug,\n  bio\n}": FOUNDER_PROFILEResult;
     "*[_type == \"article\" && defined(slug.current)][0...6]{\n  _id, title, slug, mainImage, publishedAt, categories\n}": ARTICLES_QUERYResult;
+    "*[_type == \"article\" && defined(slug.current)][0...$end]{\n  _id, title, slug, mainImage, publishedAt, categories\n}": ARTICLES_PAGINATED_QUERYResult;
     "*[_type == \"article\" && slug.current == $slug][0]{\n  title,\n  mainImage,\n  body,\n  categories,\n  slug,\n  publishedAt\n}": ARTICLE_QUERYResult;
-    "*[_type == \"services\" && defined(slug.current)][0...6]{\n  _id, name, slug, image, position\n}": SERVICES_QUERYResult;
+    "count(*[_type == \"article\" && defined(slug.current)])": ARTICLES_COUNT_QUERYResult;
+    "*[_type == \"services\" && defined(slug.current)][0...8]{\n  _id, name, slug, image, position\n}": SERVICES_QUERYResult;
     "*[_type == \"services\" && defined(slug.current)]{\n  _id, name, slug, image, position\n}": ALL_SERVICES_QUERYResult;
     "*[_type == \"services\" && slug.current == $slug][0]{\n  name,\n  image,\n  description,\n  slug,\n}": SERVICE_QUERYResult;
+    "*[_type == \"category\" && defined(slug.current)]{\n  _id, slug, title\n}": ALL_CATEGORY_QUERIESResult;
   }
 }
