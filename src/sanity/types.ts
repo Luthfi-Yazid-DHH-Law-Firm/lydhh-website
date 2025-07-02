@@ -556,7 +556,7 @@ export type ARTICLES_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: ARTICLES_PAGINATED_QUERY
-// Query: *[_type == "article" && defined(slug.current)][0...$end]{  _id, title, slug, mainImage, publishedAt, categories}
+// Query: *[_type == "article" && defined(slug.current)    && ($search == null || lower(title) match lower($search) + "*")    && ($category == null || $category in categories[]->slug.current)] | order(publishedAt desc) [0...$end]{  _id, title, slug, mainImage, publishedAt, categories}
 export type ARTICLES_PAGINATED_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -642,7 +642,7 @@ export type ARTICLE_QUERYResult = {
   publishedAt: string | null;
 } | null;
 // Variable: ARTICLES_COUNT_QUERY
-// Query: count(*[_type == "article" && defined(slug.current)])
+// Query: count(*[_type == "article" && defined(slug.current)  && ($search == null || lower(title) match lower($search) + "*" || lower(pt::text(body)) match lower($search) + "*")  && ($category == null || $category in categories[]->slug.current)])
 export type ARTICLES_COUNT_QUERYResult = number;
 // Variable: SERVICES_QUERY
 // Query: *[_type == "services" && defined(slug.current)][0...8]{  _id, name, slug, image, position}
@@ -753,9 +753,9 @@ declare module "@sanity/client" {
     "*[_type == \"member\" && slug.current == $slug][0]{\n  bio,\n  image,\n  name,\n  position,\n  slug\n}": MEMBER_QUERYResult;
     "*[_type == \"member\" && position == \"Founder\"][0]{\n  name,\n  image,\n  position,\n  slug,\n  bio\n}": FOUNDER_PROFILEResult;
     "*[_type == \"article\" && defined(slug.current)][0...6]{\n  _id, title, slug, mainImage, publishedAt, categories\n}": ARTICLES_QUERYResult;
-    "*[_type == \"article\" && defined(slug.current)][0...$end]{\n  _id, title, slug, mainImage, publishedAt, categories\n}": ARTICLES_PAGINATED_QUERYResult;
+    "*[_type == \"article\" && defined(slug.current)\n    && ($search == null || lower(title) match lower($search) + \"*\")\n    && ($category == null || $category in categories[]->slug.current)] | order(publishedAt desc) [0...$end]{\n  _id, title, slug, mainImage, publishedAt, categories\n}": ARTICLES_PAGINATED_QUERYResult;
     "*[_type == \"article\" && slug.current == $slug][0]{\n  title,\n  mainImage,\n  body,\n  categories,\n  slug,\n  publishedAt\n}": ARTICLE_QUERYResult;
-    "count(*[_type == \"article\" && defined(slug.current)])": ARTICLES_COUNT_QUERYResult;
+    "count(*[_type == \"article\" && defined(slug.current)\n  && ($search == null || lower(title) match lower($search) + \"*\" || lower(pt::text(body)) match lower($search) + \"*\")\n  && ($category == null || $category in categories[]->slug.current)])": ARTICLES_COUNT_QUERYResult;
     "*[_type == \"services\" && defined(slug.current)][0...8]{\n  _id, name, slug, image, position\n}": SERVICES_QUERYResult;
     "*[_type == \"services\" && defined(slug.current)]{\n  _id, name, slug, image, position\n}": ALL_SERVICES_QUERYResult;
     "*[_type == \"services\" && slug.current == $slug][0]{\n  name,\n  image,\n  description,\n  slug,\n}": SERVICE_QUERYResult;
