@@ -2,9 +2,9 @@ import { dateFormatter } from "@/lib/dateFormatter";
 import { urlFor } from "@/sanity/lib/image";
 import { internalGroqTypeReferenceTo, SanityImageCrop, SanityImageHotspot, Slug } from "@/sanity/types";
 import { CalendarIcon } from "@sanity/icons";
+import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FC } from "react";
 
 interface ArticlesCardProps {
   article: {
@@ -37,7 +37,7 @@ interface ArticlesCardProps {
 
 const ArticlesCard: FC<ArticlesCardProps> = ({ article }) => {
   return (
-    <div className="shadow-sm">
+    <div className="shadow-sm bg-white">
       {
         article.mainImage ?
         <Image
@@ -53,12 +53,12 @@ const ArticlesCard: FC<ArticlesCardProps> = ({ article }) => {
         /> : null
 
       }
-      <div className="p-8 space-y-2 bg-white">
+      <div className="p-8 space-y-2">
         <div className="flex items-center gap-3 text-[#999999]">
           <CalendarIcon className="text-lg" />
           <p className="text-sm">{dateFormatter(article.publishedAt)}</p>
         </div>
-        <p className="text-xl font-semibold mb-8">
+        <p className="text-xl font-semibold mb-8 line-clamp-2">
           {article.title}
         </p>
         <Link

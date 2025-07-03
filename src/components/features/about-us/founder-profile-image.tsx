@@ -3,8 +3,26 @@
 import { easeIn } from "motion";
 import AnimationWrapper from "@/components/wrappers/animation-wrapper";
 import Image from "next/image";
+import { internalGroqTypeReferenceTo, SanityImageCrop, SanityImageHotspot } from "@/sanity/types";
+import { FC } from "react";
+import { urlFor } from "@/sanity/lib/image";
 
-const FounderProfileImage = () => {
+interface FounderProfileImageProps {
+  image: {
+    asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+} | null | undefined
+}
+
+const FounderProfileImage: FC<FounderProfileImageProps> = ({ image }) => {
   return (
     <AnimationWrapper 
         classname="w-full flex items-start justify-center"
@@ -12,13 +30,20 @@ const FounderProfileImage = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, ease: easeIn }}
     >
-      <Image
-        src="/founder-image.webp"
-        alt="Company Founder Image"
-        width={398}
-        height={597}
-        className="w-96 h-[597px] object-cover rounded-md"
-      />
+      {
+        image ?
+        <Image
+          src={urlFor(image)
+            .auto("format")
+            .url()
+          }
+          alt="Company Founder Image"
+          width={398}
+          height={597}
+          className="w-96 h-[597px] object-cover rounded-md"
+        />
+        : null
+      }
     </AnimationWrapper>
   );
 };

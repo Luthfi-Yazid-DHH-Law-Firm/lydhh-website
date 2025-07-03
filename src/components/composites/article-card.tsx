@@ -46,7 +46,7 @@ const ArticleCard: FC<ArticleCardProps> = ({ article }) => {
   return (
     <div 
         onClick={() => router.push(`/articles/${article.slug?.current}`)}
-        className="relative w-full h-96 overflow-hidden group cursor-pointer"
+        className="relative w-full h-96 overflow-hidden group cursor-pointer flex"
     >
         {article?.mainImage ? (
         <Image
@@ -62,7 +62,7 @@ const ArticleCard: FC<ArticleCardProps> = ({ article }) => {
         
         <div className="absolute inset-x-0 bottom-0 h-0 bg-black/80 group-hover:h-full transition-all duration-500 ease-in-out flex items-center justify-center">
             <span className="text-white font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200">
-                See Profile
+                See Article
             </span>
         </div>
         
