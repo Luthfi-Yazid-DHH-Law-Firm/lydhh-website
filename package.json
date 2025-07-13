@@ -9,10 +9,12 @@
     "lint": "next lint",
     "predev": "npm run typegen",
     "prebuild": "npm run typegen",
-    "typegen": "sanity schema extract --path=./src/sanity/extract.json && sanity typegen generate"
+    "typegen": "sanity schema extract --path=./src/sanity/extract.json && sanity typegen generate",
+    "email": "email dev --dir src/emails"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
+    "@react-email/components": "0.2.0",
     "@sanity/icons": "^3.7.0",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.87.1",
@@ -25,12 +27,15 @@
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.56.3",
     "react-is": "^19.1.0",
+    "resend": "^4.6.0",
     "sanity": "^3.87.1",
     "styled-components": "^6.1.17",
+    "uuid": "^11.1.0",
     "zod": "^3.24.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@react-email/preview-server": "^4.1.1",
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^20",
@@ -38,6 +43,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
+    "react-email": "4.1.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

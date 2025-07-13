@@ -1,21 +1,12 @@
 import AnimationWrapper from "@/components/wrappers/animation-wrapper";
-import {
-  ForwardRefExoticComponent,
-  ReactNode,
-  RefAttributes,
-  SVGProps,
-} from "react";
+import { ReactNode } from "react";
 
-const IconCard = ({
+const ValueCard = ({
   index,
-  Icon,
   className,
   children,
 }: {
   index: number;
-  Icon: ForwardRefExoticComponent<
-    Omit<SVGProps<SVGSVGElement>, "ref"> & RefAttributes<SVGSVGElement>
-  >;
   className?: string;
   children: ReactNode;
 }) => {
@@ -28,10 +19,10 @@ const IconCard = ({
       transition={{ duration: 1, delay }}
     >
       {/* <Image src={testImg} alt="service-image" width={251} height={251} className="w-full h-64 object-cover" /> */}
-      <Icon className="text-4xl" />
+      <h1 className="text-2xl font-bold">{index + 1}</h1>
       {children}
     </AnimationWrapper>
   );
 };
 
-export default IconCard;
+export default ValueCard;

@@ -82,3 +82,5 @@ export const ALL_CATEGORY_QUERIES =
   defineQuery(`*[_type == "category" && defined(slug.current)]{
   _id, slug, title
 }`);
+
+export const COMPANY_VALUES_QUERY = defineQuery(`*[_type == "value" && defined(value)] | order(_createdAt asc)`)

@@ -1,7 +1,7 @@
 "use client";
 
 import { easeIn } from "motion";
-import AnimationWrapper from "../../wrappers/animation-wrapper";
+import AnimationWrapper from "@/components/wrappers/animation-wrapper";
 import LinkButton from "@/components/ui/link";
 
 const HomepageAboutDetail = () => {

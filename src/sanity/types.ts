@@ -68,6 +68,46 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Value = {
+  _id: string;
+  _type: "value";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  value?: string;
+  description?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+};
+
 export type Services = {
   _id: string;
   _type: "services";
@@ -384,7 +424,7 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Services | Testimonial | Member | Article | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Value | Services | Testimonial | Member | Article | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: MEMBERS_QUERY
@@ -743,6 +783,47 @@ export type ALL_CATEGORY_QUERIESResult = Array<{
   slug: Slug | null;
   title: string | null;
 }>;
+// Variable: COMPANY_VALUES_QUERY
+// Query: *[_type == "value" && defined(value)] | order(_createdAt asc)
+export type COMPANY_VALUES_QUERYResult = Array<{
+  _id: string;
+  _type: "value";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  value?: string;
+  description?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -760,5 +841,6 @@ declare module "@sanity/client" {
     "*[_type == \"services\" && defined(slug.current)]{\n  _id, name, slug, image, position\n}": ALL_SERVICES_QUERYResult;
     "*[_type == \"services\" && slug.current == $slug][0]{\n  name,\n  image,\n  description,\n  slug,\n}": SERVICE_QUERYResult;
     "*[_type == \"category\" && defined(slug.current)]{\n  _id, slug, title\n}": ALL_CATEGORY_QUERIESResult;
+    "*[_type == \"value\" && defined(value)] | order(_createdAt asc)": COMPANY_VALUES_QUERYResult;
   }
 }

@@ -1,6 +1,6 @@
 import { MenuIcon } from "@sanity/icons";
 import { useState } from "react";
-import Sheet from "../ui/sheet";
+import Sheet from "@/components/ui/sheet";
 import Link from "next/link";
 
 const Sidebar = () => {
@@ -21,23 +21,33 @@ const Sidebar = () => {
         size="sm"
       >
         <Sheet.Content className="space-y-1 h-full flex flex-col">
-          <Link href="/about-us" className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors">
-            About
-          </Link>
-          <Link href="/team" className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors">
-            Our Team
-          </Link>
-          <Link href="/our-services" className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors">
-            Services
-          </Link>
-          <Link href="/articles" className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors">
-            Articles
-          </Link>
-          <Link href="/contact" 
-            className="bg-linear-to-r from-[#E1BC1C] to-[#a98e16] text-white w-full py-3 px-4 rounded-sm hover:transition-colors text-center mt-auto"
-          >
-            Contact Us
-          </Link>
+          <Sheet.Close className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors bg-transparent justify-start">
+            <Link href="/about-us" >
+              About
+            </Link>
+          </Sheet.Close>
+          <Sheet.Close className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors bg-transparent justify-start">
+            <Link href="/team" >
+              Our Team
+            </Link>
+          </Sheet.Close>
+          <Sheet.Close className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors bg-transparent justify-start">
+            <Link href="/our-services" >
+              Services
+            </Link>
+          </Sheet.Close>
+          <Sheet.Close className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors bg-transparent justify-start">
+            <Link href="/articles" >
+              Articles
+            </Link>
+          </Sheet.Close>
+          <Sheet.Close className="bg-transparent mt-10">
+            <Link href="/contact" 
+              className="bg-linear-to-r from-[#E1BC1C] to-[#a98e16] text-white w-full py-3 px-4 rounded-sm hover:transition-colors text-center"
+            >
+              Contact Us
+            </Link>
+          </Sheet.Close>
         </Sheet.Content>
       </Sheet>
     </>

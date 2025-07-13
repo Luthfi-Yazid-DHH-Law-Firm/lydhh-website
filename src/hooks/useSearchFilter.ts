@@ -1,6 +1,6 @@
 "use client";
 
-import { SearchFiltersType } from "@/constants/search-filters";
+import { SearchFiltersType } from "@/types/search-filters-type";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState, useRef } from "react";
 

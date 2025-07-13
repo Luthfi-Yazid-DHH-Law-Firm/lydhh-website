@@ -1,6 +1,6 @@
 "use client";
 
-import { MemberProps } from "@/constants/member-info";
+import { MemberProps } from "@/types/member-type";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
