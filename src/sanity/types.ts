@@ -840,7 +840,6 @@ declare module "@sanity/client" {
     "*[_type == \"services\" && defined(slug.current)][0...8]{\n  _id, name, slug, image, position\n}": SERVICES_QUERYResult;
     "*[_type == \"services\" && defined(slug.current)]{\n  _id, name, slug, image, position\n}": ALL_SERVICES_QUERYResult;
     "*[_type == \"services\" && slug.current == $slug][0]{\n  name,\n  image,\n  description,\n  slug,\n}": SERVICE_QUERYResult;
-    "*[_type == \"category\" && defined(slug.current)]{\n  _id, slug, title\n}": ALL_CATEGORY_QUERIESResult;
     "*[_type == \"value\" && defined(value)] | order(_createdAt asc)": COMPANY_VALUES_QUERYResult;
   }
 }

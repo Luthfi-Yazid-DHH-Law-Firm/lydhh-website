@@ -84,3 +84,4 @@ export const ALL_CATEGORY_QUERIES =
 }`);
 
 export const COMPANY_VALUES_QUERY = defineQuery(`*[_type == "value" && defined(value)] | order(_createdAt asc)`)
+
