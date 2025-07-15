@@ -22,7 +22,7 @@ const Navbar = () => {
       setOnTop(false);
     }
 
-    if (latest > prev! && latest > 50) {
+    if (latest > prev! && latest > 150) {
       setHidden(true);
     } else {
       setHidden(false);
@@ -31,7 +31,7 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className={`fixed w-full px-5 py-12 md:px-10 flex items-center justify-center h-[70px] md:h-20 z-50 ${ onTop ? "bg-black/60" : "bg-black" }`}
+      className={`fixed w-full px-5 py-12 md:px-10 flex items-center justify-center h-[70px] md:h-20 z-50 transition-colors duration-500 ${ onTop ? "transparent" : "bg-black" }`}
       variants={{
         visible: { y: 0 },
         hidden: { y: "-100%" },
