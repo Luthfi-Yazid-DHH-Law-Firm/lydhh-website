@@ -2,6 +2,7 @@ import { BlockImageComponent } from "@/sanity/block-image-component";
 import { client } from "@/sanity/lib/client";
 import { SERVICE_QUERY } from "@/sanity/lib/queries";
 import { PortableText } from "next-sanity";
+import { notFound } from "next/navigation";
 
 const options = { next: { revalidate: 60 } };
 
@@ -16,7 +17,10 @@ export default async function ServiceDetailPage({
     resolvedParams,
     options
   );
-  console.log(service);
+
+  if (!service) {
+    notFound();
+  };
   
   return (
     <div className="prose max-w-full">
