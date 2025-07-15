@@ -2,7 +2,6 @@
 
 import { motion } from 'motion/react';
 import Image from "next/image";
-import heroImg from "@/assets/hero-1.webp";
 
 const HeroBackground = () => {
   return (
@@ -17,7 +16,7 @@ const HeroBackground = () => {
               alt="hero-image" 
               height={1000} 
               width={1000} 
-              src={heroImg} 
+              src="/hero-1.webp"
               className="object-cover w-full h-screen"
               priority
             />

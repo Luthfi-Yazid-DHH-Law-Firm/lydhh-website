@@ -1,7 +1,8 @@
-import LinkButton from "@/components/ui/link";
-import ServiceCard from "@/components/composites/service-card";
 import { client } from "@/sanity/lib/client";
 import { SERVICES_QUERY } from "@/sanity/lib/queries";
+import HomepageServicesTitle from "@/components/features/homepage/homepage-services-title";
+import NoData from "@/components/features/no-data";
+import HomepageServicesGrid from "@/components/features/homepage/homepage-services-grid";
 
 const options = { next: { revalidate: 60 } };
 
@@ -17,33 +18,14 @@ const HomepageService = async () => {
       }}
     >
       <div className="2xl:w-[1440px] w-full">
-        {/* Section Header */}
-        <div className="mb-16">
-          <div className="w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-5 md:gap-2">
-            <div className="text-start">
-              <p className="text-lg text-[#E1BC1C] mb-3">Our Practice Areas</p>
-              <h2 className="text-2xl font-bold">
-                We are here to fight against any<br />
-                violance with <span className="text-[#E1BC1C] italic font-normal">experience</span>
-              </h2>
-            </div>
-            <div className="w-1/2 h-[1px] hidden lg:block bg-[#E1BC1C]" />
-            <LinkButton href="/our-services" underline={false} className="border p-3 text-white hover:text-[#E1BC1C] transition-colors duration-300">
-              Explore All
-            </LinkButton>
-          </div>
-        </div>
+        <HomepageServicesTitle />
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {services.map((service, index) => (
-            <ServiceCard 
-              key={index}
-              index={index}
-              service={service}
-            />
-          ))}
-        </div>
+        {
+          services.length === 0 ?
+            <NoData sectionName="services detail" />
+            : <HomepageServicesGrid services={services} />
+        }
       </div>
     </section>
   );

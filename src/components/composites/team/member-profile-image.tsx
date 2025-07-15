@@ -1,33 +1,19 @@
 import { urlFor } from "@/sanity/lib/image";
-import {
-  internalGroqTypeReferenceTo,
-  SanityImageCrop,
-  SanityImageHotspot,
-} from "@/sanity/types";
+import { SanityImageType } from "@/types/sanity-image-type";
 import Image from "next/image";
 import React, { FC } from "react";
 
 interface MemberProfileImageProps {
-  image:
-    | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        _type: "image";
-      }
-    | null
-    | undefined;
-    name?: string | null;
-    position?: string | null;
+  image: SanityImageType;
+  name?: string | null;
+  position?: string | null;
 }
 
-const MemberProfileImage: FC<MemberProfileImageProps> = ({ image, name, position }) => {
+const MemberProfileImage: FC<MemberProfileImageProps> = ({
+  image,
+  name,
+  position,
+}) => {
   return (
     <div className="w-full md:w-80">
       {image ? (
@@ -40,8 +26,8 @@ const MemberProfileImage: FC<MemberProfileImageProps> = ({ image, name, position
         />
       ) : null}
       <div className="w-full flex flex-col items-center justify-center p-5 bg-linear-to-r from-[#D5AA6D] to-[#9B6F45] text-white text-center">
-        <h3 className="text-xl font-medium">{ name }</h3>
-        <p className="text-sm">{ position }</p>
+        <h3 className="text-xl font-medium">{name}</h3>
+        <p className="text-sm">{position}</p>
       </div>
     </div>
   );

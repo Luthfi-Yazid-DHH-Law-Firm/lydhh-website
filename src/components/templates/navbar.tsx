@@ -56,6 +56,9 @@ const Navbar = () => {
           <HoverLink href="/about-us" classname="text-white">
             About
           </HoverLink>
+          <HoverLink href="/our-founder" classname="text-white">
+            Our Founder
+          </HoverLink>
           <HoverLink href="/team" classname="text-white">
             Our Team
           </HoverLink>

@@ -2,43 +2,13 @@
 
 import { dateFormatter } from "@/lib/dateFormatter";
 import { urlFor } from "@/sanity/lib/image";
-import {
-  internalGroqTypeReferenceTo,
-  SanityImageCrop,
-  SanityImageHotspot,
-  Slug,
-} from "@/sanity/types";
+import { ArticleType } from "@/types/article-type";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { FC } from "react";
 
 interface ArticleCardProps {
-  article: {
-    _id: string;
-    title: string | null;
-    slug: Slug | null;
-    mainImage: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-    } | null;
-    publishedAt: string | null;
-    categories: Array<{
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      _key: string;
-      [internalGroqTypeReferenceTo]?: "category";
-    }> | null;
-  };
+  article: ArticleType;
 }
 
 const ArticleCard: FC<ArticleCardProps> = ({ article }) => {

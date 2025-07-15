@@ -2,13 +2,8 @@ import AnimationWrapper from "@/components/wrappers/animation-wrapper";
 import LinkButton from "@/components/ui/link";
 import Image from "next/image";
 import { ArrowRightIcon } from "@sanity/icons";
-import {
-  internalGroqTypeReferenceTo,
-  SanityImageCrop,
-  SanityImageHotspot,
-  Slug,
-} from "@/sanity/types";
 import { urlFor } from "@/sanity/lib/image";
+import { ServiceType } from "@/types/service-type";
 
 const ServiceCard = ({
   service,
@@ -16,25 +11,7 @@ const ServiceCard = ({
   className,
   textColor = "text-white"
 }: {
-  service: {
-    _id: string;
-    name: string | null;
-    slug: Slug | null;
-    image: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-    } | null;
-    position: null;
-  };
+  service: ServiceType;
   index: number;
   className?: string;
   textColor?: string;

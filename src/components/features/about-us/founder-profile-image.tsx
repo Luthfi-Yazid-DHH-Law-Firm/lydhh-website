@@ -1,25 +1,14 @@
 "use client";
 
-import { easeIn } from "motion";
 import AnimationWrapper from "@/components/wrappers/animation-wrapper";
 import Image from "next/image";
-import { internalGroqTypeReferenceTo, SanityImageCrop, SanityImageHotspot } from "@/sanity/types";
+import { easeIn } from "motion";
 import { FC } from "react";
 import { urlFor } from "@/sanity/lib/image";
+import { SanityImageType } from "@/types/sanity-image-type";
 
 interface FounderProfileImageProps {
-  image: {
-    asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-} | null | undefined
+  image: SanityImageType;
 }
 
 const FounderProfileImage: FC<FounderProfileImageProps> = ({ image }) => {
