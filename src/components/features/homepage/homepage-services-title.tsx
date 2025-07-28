@@ -17,7 +17,7 @@ const HomepageServicesTitle = () => {
         </div>
         <div className="w-1/2 h-[1px] hidden lg:block bg-[#E1BC1C]" />
         <LinkButton
-          href="/our-services"
+          href="/practice-areas"
           underline={false}
           className="border p-3 text-white hover:text-[#E1BC1C] transition-colors duration-300"
         >

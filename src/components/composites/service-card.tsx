@@ -34,7 +34,7 @@ const ServiceCard = ({
         />
       ) : null}
       <LinkButton
-        href={`/our-services/${service.slug?.current}`}
+        href={`/practice-areas/${service.slug?.current}`}
         className={`w-full ${textColor}`}
       >
         <div className="w-full flex items-center justify-between">

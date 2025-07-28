@@ -35,13 +35,13 @@ const ServicesFlyOut = () => {
             {services.map((service, i) => (
               <Link
                 key={i}
-                href={`/our-services/${service.slug?.current}`}
+                href={`/practice-areas/${service.slug?.current}`}
                 className="blox text-sm hover:underline border-b border-gray-200 pb-3"
               >
                 {service.name}
               </Link>
             ))}
-            <Link className="blox text-sm hover:underline" href="/our-services">
+            <Link className="blox text-sm hover:underline" href="/practice-areas">
               Other Services
             </Link>
           </>

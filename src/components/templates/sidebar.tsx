@@ -32,7 +32,7 @@ const Sidebar = () => {
             </Link>
           </Sheet.Close>
           <Sheet.Close className="text-black w-full py-3 px-4 rounded-sm hover:bg-gray-100 hover:text-[#997d03] hover:transition-colors bg-transparent justify-start">
-            <Link href="/our-services" >
+            <Link href="/practice-areas" >
               Services
             </Link>
           </Sheet.Close>

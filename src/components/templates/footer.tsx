@@ -51,7 +51,7 @@ const Footer = async () => {
             Our Team
           </Link>
           <Link
-            href="/our-services"
+            href="/practice-areas"
             className=""
           >
             Services
@@ -74,7 +74,7 @@ const Footer = async () => {
           <h5 className="text-white text-xl font-medium">Our Services</h5>
           {
             services.map((service, i) => (
-              <Link key={i} href={`/our-services/${service.slug?.current}`}>
+              <Link key={i} href={`/practice-areas/${service.slug?.current}`}>
                 {service.name}
               </Link>
             ))

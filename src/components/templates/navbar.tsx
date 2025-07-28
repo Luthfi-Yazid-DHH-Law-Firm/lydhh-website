@@ -63,11 +63,11 @@ const Navbar = () => {
             Our Team
           </HoverLink>
           <HoverLink
-            href="/our-services"
+            href="/practice-areas"
             FlyOutContent={<ServicesFlyOut />}
             classname="text-white"
           >
-            Services
+            Practice Areas
           </HoverLink>
           <HoverLink href="/articles" classname="text-white">
             Articles
