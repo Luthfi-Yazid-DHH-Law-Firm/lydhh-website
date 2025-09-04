@@ -25,7 +25,7 @@ const ContactAddressList: FC<ContactAddressListProps> = ({ addresses }) => {
         </div>
       ) : (
         addresses.map((address, i) => (
-          <div className="w-full flex lg:px-8 gap-10" key={i}>
+          <div className="w-full flex flex-col items-center lg:items-start lg:flex-row px-5 lg:px-8 gap-10" key={i}>
             {/* Map */}
             {address.location?.lat && address.location?.lng ? (
               <iframe
@@ -45,7 +45,7 @@ const ContactAddressList: FC<ContactAddressListProps> = ({ addresses }) => {
               </div>
             )}
             {/* Address Info */}
-            <div className="space-y-3">
+            <div className="space-y-3 text-center lg:text-start">
               {address.name && (
                 <h3 className="text-lg font-semibold text-gray-800">
                   {address.name}
@@ -53,14 +53,14 @@ const ContactAddressList: FC<ContactAddressListProps> = ({ addresses }) => {
               )}
 
               {address.phone && (
-                <div className="flex items-center gap-2 text-[#999999]">
+                <div className="flex items-center justify-center lg:justify-start gap-2 text-[#999999]">
                   <PhoneIcon className="w-[18px] h-[18px]" />
                   <p className="text-sm">{address.phone}</p>
                 </div>
               )}
 
               {address.email && (
-                <div className="flex items-center gap-2 text-[#999999]">
+                <div className="flex items-center justify-center lg:justify-start gap-2 text-[#999999]">
                   <EnvelopeIcon className="text-lg font-bold" />
                   <p className="text-sm">{address.email}</p>
                 </div>

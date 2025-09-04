@@ -8,7 +8,7 @@ import { Resend } from "resend";
 import { v4 as generateID } from "uuid";
 import { z } from "zod";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY!);
 
 const emailSchema = contactFormSchema;
 type EmailRequest = ContactFormData;
