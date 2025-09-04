@@ -13,7 +13,39 @@
  */
 
 // Source: schema.json
-export type CompanyAddress = Geopoint;
+export type Logo = {
+  _id: string;
+  _type: "logo";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+};
+
+export type CompanyAddress = {
+  _id: string;
+  _type: "companyAddress";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  location?: Geopoint;
+  email?: string;
+  phone?: string;
+};
 
 export type CompanyProfile = {
   _id: string;
@@ -170,17 +202,6 @@ export type FounderProfile = {
     _type: "image";
     _key: string;
   }>;
-};
-
-export type CompanyContact = {
-  _id: string;
-  _type: "companyContact";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  slug?: Slug;
-  contactAddress?: string;
 };
 
 export type Value = {
@@ -602,7 +623,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = CompanyAddress | CompanyProfile | FounderProfile | CompanyContact | Value | Services | Testimonial | Member | Article | Category | BlockContent | GeopointRadius | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Logo | CompanyAddress | CompanyProfile | FounderProfile | Value | Services | Testimonial | Member | Article | Category | BlockContent | GeopointRadius | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: MEMBERS_QUERY
@@ -696,10 +717,10 @@ export type MEMBER_QUERYResult = {
   slug: Slug | null;
 } | null;
 // Variable: FOUNDER_PROFILE
-// Query: *[_type == "member" && position == "Founder"][0]{  name,  image,  position,  slug,  bio}
+// Query: *[_type == "founderProfile"][0]{  name,  mainImage,  slug,  summary,  description}
 export type FOUNDER_PROFILEResult = {
   name: string | null;
-  image: {
+  mainImage: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -709,11 +730,42 @@ export type FOUNDER_PROFILEResult = {
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt?: string;
     _type: "image";
   } | null;
-  position: string | null;
   slug: Slug | null;
-  bio: Array<{
+  summary: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }> | null;
+  description: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -1002,6 +1054,100 @@ export type COMPANY_VALUES_QUERYResult = Array<{
     _key: string;
   }>;
 }>;
+// Variable: COMPANY_PROFILE_QUERY
+// Query: *[_type == "companyProfile" && slug.current == "about-us"][0]{  title,  slug,  summary,  description}
+export type COMPANY_PROFILE_QUERYResult = {
+  title: string | null;
+  slug: Slug | null;
+  summary: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }> | null;
+  description: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }> | null;
+} | null;
+// Variable: COMPANY_ADDRESSES_QUERY
+// Query: *[_type == "companyAddress"]{  name, location, email, phone}
+export type COMPANY_ADDRESSES_QUERYResult = Array<{
+  name: string | null;
+  location: Geopoint | null;
+  email: string | null;
+  phone: string | null;
+}>;
+// Variable: COMPANY_LOGO_QUERY
+// Query: *[_type == "logo" && slug.current == $slug][0]{  name, slug, image}
+export type COMPANY_LOGO_QUERYResult = {
+  name: string | null;
+  slug: Slug | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -1010,7 +1156,7 @@ declare module "@sanity/client" {
     "*[_type == \"member\" && defined(slug.current)] | order(position)[0...6]{\n  _id, name, slug, image, position\n}": MEMBERS_QUERYResult;
     "*[_type == \"member\" && position != \"Founder\"] | order(position){\n  _id,\n  name,\n  image,\n  position,\n  slug,\n}": MEMBERS_NO_FOUNDER_QUERYResult;
     "*[_type == \"member\" && slug.current == $slug][0]{\n  bio,\n  image,\n  name,\n  position,\n  slug\n}": MEMBER_QUERYResult;
-    "*[_type == \"member\" && position == \"Founder\"][0]{\n  name,\n  image,\n  position,\n  slug,\n  bio\n}": FOUNDER_PROFILEResult;
+    "*[_type == \"founderProfile\"][0]{\n  name,\n  mainImage,\n  slug,\n  summary,\n  description\n}": FOUNDER_PROFILEResult;
     "*[_type == \"article\" && defined(slug.current)][0...6]{\n  _id, title, slug, mainImage, publishedAt, categories\n}": ARTICLES_QUERYResult;
     "*[_type == \"article\" && defined(slug.current)\n    && ($search == null || lower(title) match lower($search) + \"*\")\n    && ($category == null || $category in categories[]->slug.current)] | order(publishedAt desc) [0...$end]{\n  _id, title, slug, mainImage, publishedAt, categories\n}": ARTICLES_PAGINATED_QUERYResult;
     "*[_type == \"article\" && slug.current == $slug][0]{\n  title,\n  mainImage,\n  body,\n  categories,\n  slug,\n  publishedAt\n}": ARTICLE_QUERYResult;
@@ -1020,5 +1166,8 @@ declare module "@sanity/client" {
     "*[_type == \"services\" && slug.current == $slug][0]{\n  name,\n  image,\n  description,\n  slug,\n}": SERVICE_QUERYResult;
     "*[_type == \"category\" && defined(slug.current)]{\n  _id, slug, title\n}": ALL_CATEGORY_QUERIESResult;
     "*[_type == \"value\" && defined(value)] | order(_createdAt asc)": COMPANY_VALUES_QUERYResult;
+    "*[_type == \"companyProfile\" && slug.current == \"about-us\"][0]{\n  title,\n  slug,\n  summary,\n  description\n}": COMPANY_PROFILE_QUERYResult;
+    "*[_type == \"companyAddress\"]{\n  name, location, email, phone\n}": COMPANY_ADDRESSES_QUERYResult;
+    "*[_type == \"logo\" && slug.current == $slug][0]{\n  name, slug, image\n}": COMPANY_LOGO_QUERYResult;
   }
 }

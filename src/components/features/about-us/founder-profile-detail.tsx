@@ -24,8 +24,8 @@ const FounderProfileDetail: FC<FounderProfileDetailProps> = ({ founder }) => {
       </div>
       <div className="prose max-w-full">
         {
-          founder?.bio ?
-          <PortableText value={founder?.bio} />
+          founder?.description ?
+          <PortableText value={founder?.description} />
           : "No descriptions"
         }
       </div>

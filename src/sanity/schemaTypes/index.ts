@@ -7,10 +7,10 @@ import { memberType } from "./memberType";
 import { testimonialType } from "./testimonialType";
 import { serviceType } from "./servicesType";
 import { companyValueType } from "./companyValueType";
-import { companyContactType } from "./companyContactType";
 import { founderProfileType } from "./founderProfileType";
 import { companyProfileType } from "./companyProfileType";
 import { companyAddressType } from "./companyAddressType";
+import { companyLogoType } from "./companyLogoType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -21,9 +21,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     testimonialType,
     serviceType,
     companyValueType,
-    companyContactType,
     founderProfileType,
     companyProfileType,
     companyAddressType,
+    companyLogoType,
   ],
 };

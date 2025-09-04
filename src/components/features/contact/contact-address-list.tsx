@@ -2,58 +2,73 @@
 
 import { PhoneIcon } from "@/assets/service-icons";
 import AnimationWrapper from "@/components/wrappers/animation-wrapper";
-import { EnvelopeIcon, MarkerIcon } from "@sanity/icons";
+import { COMPANY_ADDRESSES_QUERYResult } from "@/sanity/types";
+import { EnvelopeIcon } from "@sanity/icons";
 import { easeIn } from "motion";
+import { FC } from "react";
 
-const ContactAddressList = () => {
+interface ContactAddressListProps {
+  addresses: COMPANY_ADDRESSES_QUERYResult;
+}
+
+const ContactAddressList: FC<ContactAddressListProps> = ({ addresses }) => {
   return (
     <AnimationWrapper
-      classname="w-full 2xl:w-[1440px] grid grid-cols-1 lg:grid-cols-2 relative px-8 lg:px-16 space-y-6"
+      classname="w-full 2xl:w-[1440px] grid grid-cols-1"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.7, ease: easeIn }}
     >
-      <div className="w-full lg:px-8 space-y-5">
-        <div className="flex items-start lg:items-center gap-2 text-[#999999]">
-          <MarkerIcon className="text-lg font-bold" />
-          <p className="max-w-2xs xl:max-w-lg">
-            GKM Green Tower Floor 20 Jl. TB Simatupang Kav. 89-G, Jakarta
-            Selatan (12520) - INDONESIA
-          </p>
+      {!addresses || addresses.length === 0 ? (
+        <div className="col-span-full text-center py-8">
+          <p className="text-gray-500">No addresses available</p>
         </div>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.7045493097075!2d106.83410317499107!3d-6.302496493686701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1563912fed9%3A0xf4fa5584742669b6!2sJakarta%20International%20Law%20Office%20(JILO)!5e0!3m2!1sen!2sid!4v1750754510406!5m2!1sen!2sid"
-          loading="lazy"
-          className="w-full h-80"
-        />
-      </div>
-      <div className="w-full lg:px-8 space-y-5">
-        <div className="flex items-start lg:items-center gap-2 text-[#999999]">
-          <MarkerIcon className="text-lg font-bold" />
-          <p className="max-w-2xs xl:max-w-lg">
-            Jl. Waru Nomor 8-A, RT. 09, RW. 03, Gedong, Pasar Rebo, Jakarta
-            Timur (13760) - INDONESIA
-          </p>
-        </div>
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d310.4865985113928!2d106.85828933789823!3d-6.293263566134743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f30068af2779%3A0x145806c6fd3d2f03!2sDPP%20DePA-RI%20Dewan%20Pimpinan%20Pusat!5e0!3m2!1sen!2sid!4v1750757564919!5m2!1sen!2sid" 
-          className="w-full h-80"
-        />
-      </div>
-      <div className="w-full lg:col-span-2 flex flex-col md:flex-row items-center justify-center gap-4">
-        <div className="flex items-center gap-2 text-[#999999]">
-          <PhoneIcon className="w-[18px] h-[18px]" />
-          <p className="max-w-2xs">+62 21 2949 0519</p>
-        </div>
-        <div className="flex items-center gap-2 text-[#999999]">
-          <PhoneIcon className="w-[18px] h-[18px]" />
-          <p className="max-w-2xs">+62 8778 6151</p>
-        </div>
-        <div className="flex items-center gap-2 text-[#999999]">
-          <EnvelopeIcon className="text-lg font-bold" />
-          <p className="max-w-2xs">info@jilolaw.com</p>
-        </div>
-      </div>
+      ) : (
+        addresses.map((address, i) => (
+          <div className="w-full flex lg:px-8 gap-10" key={i}>
+            {/* Map */}
+            {address.location?.lat && address.location?.lng ? (
+              <iframe
+                src={`https://www.google.com/maps/embed/v1/view?key=${process.env.NEXT_PUBLIC_GOOGLE_MAP_API}&center=${address.location.lat},${address.location.lng}&zoom=15`}
+                width="60%"
+                height="320"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-lg shadow-md"
+                title={`Map for ${address.name || 'Location'}`}
+              />
+            ) : (
+              <div className="w-full h-80 bg-gray-200 flex items-center justify-center rounded-lg">
+                <p className="text-gray-500">Map not available - missing coordinates</p>
+              </div>
+            )}
+            {/* Address Info */}
+            <div className="space-y-3">
+              {address.name && (
+                <h3 className="text-lg font-semibold text-gray-800">
+                  {address.name}
+                </h3>
+              )}
+
+              {address.phone && (
+                <div className="flex items-center gap-2 text-[#999999]">
+                  <PhoneIcon className="w-[18px] h-[18px]" />
+                  <p className="text-sm">{address.phone}</p>
+                </div>
+              )}
+
+              {address.email && (
+                <div className="flex items-center gap-2 text-[#999999]">
+                  <EnvelopeIcon className="text-lg font-bold" />
+                  <p className="text-sm">{address.email}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        ))
+      )}
     </AnimationWrapper>
   );
 };

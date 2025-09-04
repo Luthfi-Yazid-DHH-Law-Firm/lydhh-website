@@ -1,86 +1,51 @@
 import { PhoneIcon } from "@/assets/service-icons";
 import { client } from "@/sanity/lib/client";
-import { SERVICES_QUERY } from "@/sanity/lib/queries";
+import { urlFor } from "@/sanity/lib/image";
+import { COMPANY_ADDRESSES_QUERY } from "@/sanity/lib/queries";
+import { COMPANY_LOGO_QUERYResult } from "@/sanity/types";
 import { EnvelopeIcon, MarkerIcon } from "@sanity/icons";
 import Image from "next/image";
-import Link from "next/link";
+import { FC } from "react";
 
 const options = { next: { revalidate: 60 } };
 
-const Footer = async () => {
-  const services = await client.fetch(SERVICES_QUERY, {}, options);
+interface FooterProps {
+  logo: COMPANY_LOGO_QUERYResult;
+}
+
+const Footer: FC<FooterProps> = async ({ logo }) => {
+  const addresses = await client.fetch(COMPANY_ADDRESSES_QUERY, {}, options);
+  const mainAddress = addresses[0];
   return (
-    <footer className="w-full py-12 flex items-center justify-center bg-[#191514]">
-      <div className="w-full 2xl:w-[1440px] px-5 md:px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 space-y-8">
+    <footer className="w-full py-12 flex items-center justify-center bg-white border-t border-[#B58C2A]">
+      <div className="w-full 2xl:w-[1440px] px-5 md:px-10 flex flex-col md:flex-row md:justify-between">
         <div className="space-y-3">
-          <Image
-            width={176}
-            height={53}
-            src="/jilo-logo-small.png"
-            alt="jilo-logo"
-            className="w-fit h-14 object-contain mb-5"
-          />
+          {logo?.image ? (
+            <Image
+              width={176}
+              height={53}
+              src={urlFor(logo.image).auto("format").url()}
+              alt="jilo-logo"
+              className="w-fit h-14 object-contain mb-5"
+            />
+          ) : (
+            <Image
+              width={176}
+              height={53}
+              src="/jilo-logo-small.png"
+              alt="jilo-logo"
+              className="w-fit h-14 object-contain mb-5"
+            />
+          )}
           <div className="flex items-start lg:items-center gap-2 text-[#999999]">
             <MarkerIcon className="text-lg font-bold" />
             <p className="max-w-2xs">
-              GKM Green Tower Floor 20 Jl. TB Simatupang Kav. 89-G, Jakarta
-              Selatan (12520) - INDONESIA
-            </p>
-          </div>
-          <div className="flex items-start lg:items-center gap-2 text-[#999999]">
-            <MarkerIcon className="text-lg font-bold" />
-            <p className="max-w-2xs">
-              Jl. Waru Nomor 8-A, RT. 09, RW. 03, Gedong, Pasar Rebo, Jakarta
-              Timur (13760) - INDONESIA
+              {mainAddress.name}
             </p>
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 text-[#999999] md:pl-8">
-          <h5 className="text-white text-xl font-medium">Quick Links</h5>
-          <Link
-            href="/about-us"
-            className=""
-          >
-            About
-          </Link>
-          <Link
-            href="/team"
-            className=""
-          >
-            Our Team
-          </Link>
-          <Link
-            href="/practice-areas"
-            className=""
-          >
-            Services
-          </Link>
-          <Link
-            href="/articles"
-            className=""
-          >
-            Articles
-          </Link>
-          <Link
-            href="/contact"
-            className=""
-          >
-            Contact Us
-          </Link>
-          
-        </div>
         <div className="flex flex-col gap-3 text-[#999999]">
-          <h5 className="text-white text-xl font-medium">Our Services</h5>
-          {
-            services.map((service, i) => (
-              <Link key={i} href={`/practice-areas/${service.slug?.current}`}>
-                {service.name}
-              </Link>
-            ))
-          }
-        </div>
-        <div className="flex flex-col gap-3 text-[#999999] md:pl-8">
           <h5 className="text-white text-xl font-medium">Contact</h5>
           <div className="flex items-center gap-2 text-[#999999]">
             <PhoneIcon className="w-[18px] h-[18px]" />
@@ -95,6 +60,10 @@ const Footer = async () => {
             <p className="max-w-2xs">info@jilolaw.com</p>
           </div>
         </div>
+
+        {/* <div>
+          
+        </div> */}
       </div>
     </footer>
   );

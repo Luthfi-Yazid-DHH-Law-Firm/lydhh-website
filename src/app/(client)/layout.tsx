@@ -1,5 +1,7 @@
 import Footer from "@/components/templates/footer";
 import Navbar from "@/components/templates/navbar";
+import { client } from "@/sanity/lib/client";
+import { COMPANY_LOGO_QUERY } from "@/sanity/lib/queries";
 import { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { ReactNode } from "react";
@@ -16,12 +18,15 @@ const poppins = Poppins({
     subsets: ["latin"]
 })
 
-const ClientLayout = ({ children }: { children: ReactNode }) => {
+const options = { next: { revalidate: 60 } };
+
+const ClientLayout = async ({ children }: { children: ReactNode }) => {
+    const mainLogo = await client.fetch(COMPANY_LOGO_QUERY, {slug: "main-logo"}, options);
     return (
         <div className={`min-h-screen w-full relative bg-[#f4f4f4] ${poppins.className}`}>
-            <Navbar />
+            <Navbar logo={mainLogo}/>
             { children }
-            <Footer />
+            <Footer logo={mainLogo} />
         </div>
     )
 };

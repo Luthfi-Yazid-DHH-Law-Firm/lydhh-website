@@ -4,7 +4,7 @@ import { defineType } from "sanity";
 export const companyAddressType = defineType({
   name: "companyAddress",
   title: "Company Address",
-  type: "document", // Change this temporarily
+  type: "document",
   icon: TagIcon,
   fields: [
     {
@@ -16,6 +16,16 @@ export const companyAddressType = defineType({
       name: 'location',
       title: 'Location',
       type: 'geopoint'
-    }
+    },
+    {
+      name: 'email',
+      title: 'Email',
+      type: 'string'
+    },
+    {
+      name: 'phone',
+      title: 'Phone Number',
+      type: 'string'
+    },
   ]
 });

@@ -11,10 +11,10 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem("testimonial").title("Testimonial"),
       S.documentTypeListItem("services").title("Services"),
       S.documentTypeListItem("value").title("Company Values"),
-      S.documentTypeListItem("companyContact").title("Company Contact"),
       S.documentTypeListItem("founderProfile").title("Founder Profile"),
       S.documentTypeListItem("companyProfile").title("Company Profile"),
       S.documentTypeListItem("companyAddress").title("Company Address"),
+      S.documentTypeListItem("logo").title("Company Logo"),
       S.divider(),
       ...S.documentTypeListItems().filter(
         (item) =>
@@ -26,10 +26,10 @@ export const structure: StructureResolver = (S) =>
             "testimonial",
             "services",
             "value",
-            "companyContact",
             "founderProfile",
             "companyProfile",
-            "companyAddress"
+            "companyAddress",
+            "logo",
           ].includes(item.getId()!)
       ),
     ]);

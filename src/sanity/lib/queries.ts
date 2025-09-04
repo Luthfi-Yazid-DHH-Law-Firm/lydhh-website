@@ -24,12 +24,12 @@ export const MEMBER_QUERY =
 }`);
 
 export const FOUNDER_PROFILE =
-  defineQuery(`*[_type == "member" && position == "Founder"][0]{
+  defineQuery(`*[_type == "founderProfile"][0]{
   name,
-  image,
-  position,
+  mainImage,
   slug,
-  bio
+  summary,
+  description
 }`);
 
 export const ARTICLES_QUERY =
@@ -83,5 +83,24 @@ export const ALL_CATEGORY_QUERIES =
   _id, slug, title
 }`);
 
-export const COMPANY_VALUES_QUERY = defineQuery(`*[_type == "value" && defined(value)] | order(_createdAt asc)`)
+export const COMPANY_VALUES_QUERY = defineQuery(
+  `*[_type == "value" && defined(value)] | order(_createdAt asc)`
+);
 
+export const COMPANY_PROFILE_QUERY =
+  defineQuery(`*[_type == "companyProfile" && slug.current == "about-us"][0]{
+  title,
+  slug,
+  summary,
+  description
+}`);
+
+export const COMPANY_ADDRESSES_QUERY =
+  defineQuery(`*[_type == "companyAddress"]{
+  name, location, email, phone
+}`);
+
+export const COMPANY_LOGO_QUERY =
+  defineQuery(`*[_type == "logo" && slug.current == $slug][0]{
+  name, slug, image
+}`);

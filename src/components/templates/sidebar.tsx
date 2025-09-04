@@ -11,7 +11,7 @@ const Sidebar = () => {
         className="w-6 h-6 flex justify-center items-center lg:hidden"
         onClick={() => setIsOpen(true)}
       >
-        <MenuIcon className="text-white text-2xl" />
+        <MenuIcon className="text-black text-2xl" />
       </button>
 
       <Sheet
