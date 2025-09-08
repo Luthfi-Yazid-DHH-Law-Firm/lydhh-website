@@ -32,7 +32,7 @@ const HeroSmall = () => {
     <div
       className="w-full h-96 flex flex-col items-center justify-center gap-6"
       style={{
-        backgroundImage: "url(/hero-1.webp)",
+        backgroundImage: "url(/company-profile.webp)",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
       }}

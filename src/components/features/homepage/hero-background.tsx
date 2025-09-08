@@ -16,7 +16,7 @@ const HeroBackground = () => {
               alt="hero-image" 
               height={1000} 
               width={1000} 
-              src="/hero-1.webp"
+              src="/company-profile.webp"
               className="object-cover w-full h-screen"
               priority
             />

@@ -12,7 +12,7 @@ const playFair = Playfair_Display({
 
 const HomepageHeroText = () => {
   return (
-    <div className="w-full justify-center items-center lg:items-start text-center lg:text-left absolute inset-0 text-white flex flex-col h-full z-20 px-8 gap-4 xl:pl-64 lg:px-16">
+    <div className="w-full justify-center bg-black/50 items-center lg:items-start text-center lg:text-left absolute inset-0 text-white flex flex-col h-full z-20 px-8 gap-4 xl:pl-64 lg:px-16">
       <motion.p
         className="text-lg font-medium text-white/90 lg:text-xl mb-2"
         initial={{ opacity: 0, y: 15 }}
