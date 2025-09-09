@@ -16,7 +16,7 @@ export default function NotFound() {
         </div>
         <p className="text-center">Sorry, we can&apos;t seem to find what you&apos;re looking for.</p>
         <Image 
-          src="/image-404.png"
+          src="/images/image-404.png"
           alt="Page Not Found"
           height="400"
           width="400"

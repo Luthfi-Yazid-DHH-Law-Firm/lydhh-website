@@ -59,7 +59,7 @@ const Navbar: FC<NavbarProps> = ({ logo }) => {
         ) : (
           <Link href="/">
             <Image
-              src="/jilo-logo.png"
+              src="/images/jilo-logo.png"
               alt="jilo-logo"
               width="400"
               height="60"

@@ -14,7 +14,7 @@ const HomepageAboutTitle: FC<HomepageAboutTitleProps> = ({ logo }) => {
   // Generate the image URL
   const backgroundImageUrl = logo?.image 
     ? urlFor(logo.image).auto("format").url()
-    : "/jilo-logo-small.png";
+    : "/images/jilo-logo-small.png";
 
   return (
     <AnimationWrapper

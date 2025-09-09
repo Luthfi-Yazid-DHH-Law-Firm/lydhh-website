@@ -13,7 +13,7 @@ const HomepageService = async () => {
     <section
       className="w-full flex items-center justify-center py-20 px-8 lg:px-16 bg-[#5E0302]/85 bg-cover bg-center bg-no-repeat text-white"
       style={{
-        backgroundImage: "url(/bg-parallax1-1.webp)",
+        backgroundImage: "url(/images/bg-parallax1-1.webp)",
         backgroundBlendMode: "overlay"
       }}
     >

@@ -13,7 +13,7 @@ const CompanyProfileImage = () => {
         transition={{ duration: 0.7, ease: easeIn }}
     >
       <Image
-        src="/company-profile.webp"
+        src="/images/company-profile.webp"
         alt="Company Profile Image"
         width={398}
         height={597}

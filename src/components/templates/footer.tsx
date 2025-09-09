@@ -32,7 +32,7 @@ const Footer: FC<FooterProps> = async ({ logo }) => {
             <Image
               width={176}
               height={53}
-              src="/jilo-logo-small.png"
+              src="/images/jilo-logo-small.png"
               alt="jilo-logo"
               className="w-fit h-14 object-contain mb-5"
             />
