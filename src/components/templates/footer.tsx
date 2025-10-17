@@ -1,4 +1,3 @@
-import { PhoneIcon } from "@/assets/service-icons";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { COMPANY_ADDRESSES_QUERY } from "@/sanity/lib/queries";
@@ -48,16 +47,8 @@ const Footer: FC<FooterProps> = async ({ logo }) => {
         <div className="flex flex-col gap-3 text-[#999999]">
           <h5 className="text-white text-xl font-medium">Contact</h5>
           <div className="flex items-center gap-2 text-[#999999]">
-            <PhoneIcon className="w-[18px] h-[18px]" />
-            <p className="max-w-2xs">+62 21 2949 0519</p>
-          </div>
-          <div className="flex items-center gap-2 text-[#999999]">
-            <PhoneIcon className="w-[18px] h-[18px]" />
-            <p className="max-w-2xs">+62 8778 6151</p>
-          </div>
-          <div className="flex items-center gap-2 text-[#999999]">
             <EnvelopeIcon className="text-lg font-bold" />
-            <p className="max-w-2xs">Coming soon</p>
+            <p className="max-w-2xs">info@lydhhlawfirm.com</p>
           </div>
         </div>
 
