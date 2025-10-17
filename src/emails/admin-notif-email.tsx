@@ -40,7 +40,7 @@ export const AdminNotifEmail = ({ name, subject, message }: AdminNotifEmailProps
 AdminNotifEmail.PreviewProps = {
   name: "Michael Bulba",
   subject: "Need a Lawyer for Elder Abuse Case",
-  message: "Hello, JILO. I am Michael Bulba."
+  message: "Hello, Luthfi Yazid DHH Law Firm. I am Michael Bulba."
 } as AdminNotifEmailProps;
 
 export default AdminNotifEmail;

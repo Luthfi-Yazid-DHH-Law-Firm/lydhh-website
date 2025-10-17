@@ -47,7 +47,7 @@ const ServicesSidebar = async () => {
         </div>
         <div className="flex items-center gap-2 text-[#999999]">
           <EnvelopeIcon className="text-lg font-bold" />
-          <p className="max-w-2xs">info@jilolaw.com</p>
+          <p className="max-w-2xs">Coming soon</p>
         </div>
       </div>
     </div>

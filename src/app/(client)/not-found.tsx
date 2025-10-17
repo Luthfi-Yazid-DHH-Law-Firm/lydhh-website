@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "404 Not Found | Luthfi Yazid & DHH Law Firm"
+  title: "404 Not Found | Luthfi Yazid DHH Law Firm"
 };
 
 export default function NotFound() {

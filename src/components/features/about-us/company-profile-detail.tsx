@@ -11,7 +11,7 @@ const CompanyProfileDetail = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, ease: easeIn }}
     >
-      <h2 className="text-2xl font-semibold text-[#A22C51]">About JILO</h2>
+      <h2 className="text-2xl font-semibold text-[#A22C51]">About Luthfi Yazid DHH Law Firm</h2>
       <p className="text-justify">
         Indonesia has been fully recovering from severe economic crisis of 1997
         after relatively stable political environment under Yudhoyono presidency
@@ -21,8 +21,7 @@ const CompanyProfileDetail = () => {
         Indonesian legal system needs to be adjusted towards good and clean
         governance. In this regards, the traditional law firm attitude may not
         sustain changing demands thus a new radical approach is indispensable.
-        Upon the spirit of globalization, Jakarta International Law Office
-        (JILO) is established as a commercial law firm based in Jakarta,
+        Upon the spirit of globalization, Luthfi Yazid DHH Law Firm is established as a commercial law firm based in Jakarta,
         Indonesia. The firm is our response to the growing demand for
         sophisticated legal services with global scope. Indeed, we represent the
         next generation of lawyers with a clear vision for legal solution in the
@@ -34,14 +33,14 @@ const CompanyProfileDetail = () => {
         countries, we anticipate the growing needs of legal assistances of many
         international companies for such purposes. Fresh formation of visionary
         people with dreams, imagination, people with ideas, eyes for detail and
-        determination to succeed, JILO is intended to be a modern and advanced
+        determination to succeed, Luthfi Yazid DHH Law Firm is intended to be a modern and advanced
         law firm with a dynamic and innovative attitude. Most of our lawyers are
         celebrated leaders in their field. They are dedicated lawyers with long
         standing experiences in handling legal matters and disputes. We work
         closely to help each other in realizing our potentials and develop our
         career objectives. We do believe that one key of success is being our
         self. Unlike many other firms, we are not attracted in becoming the
-        biggest and the oldest. Instead, JILO focus on delivering best solution
+        biggest and the oldest. Instead, Luthfi Yazid DHH Law Firm focus on delivering best solution
         to the client&apos;s problem and ensuring the highest quality of
         services. We prepare to offer and to deliver the best services to our
         clients in an extensive variety of legal areas. In spite of everything,
@@ -51,7 +50,7 @@ const CompanyProfileDetail = () => {
         major legal business areas with strong global perspective. Our alliance
         policy, for example, aimed to promote links with other independent
         international law firms in major jurisdictions. As a newly formed law
-        firm, JILO have successfully gaining recognition that is reflected
+        firm, Luthfi Yazid DHH Law Firm have successfully gaining recognition that is reflected
         through our access to international lawyers from several other
         jurisdictions.
       </p>

@@ -19,7 +19,7 @@ const HomepageHeroText = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: easeIn }}
       >
-        Luthfi Yazid & DHH Law Firm
+        Luthfi Yazid DHH Law Firm
       </motion.p>
       <motion.h1
         className="text-4xl lg:text-7xl font-bold max-w-2xl"
