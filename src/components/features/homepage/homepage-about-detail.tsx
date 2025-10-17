@@ -26,7 +26,7 @@ const HomepageAboutDetail: FC<HomepageAboutDetailProps> = ({ profile }) => {
         <PortableText value={profile.summary} />
       ) : (
         <p>
-          We are Luthfi Yazid and DHH (LYDHH) Law Firm, a modern commercial
+          We are Luthfi Yazid  DHH (LYDHH) Law Firm, a modern commercial
           law firm based in Jakarta, dedicated to providing globally minded,
           client-focused legal solutions. Formed by visionary legal
           professionals, we aim to support international and local businesses
