@@ -13,7 +13,7 @@ interface FounderProfileDetailProps {
 const FounderProfileDetail: FC<FounderProfileDetailProps> = ({ founder }) => {
   return (
     <AnimationWrapper
-      classname="w-full flex flex-col items-start justify-center gap-4"
+      classname="w-full flex flex-col items-start justify-center gap-4 mt-10 lg:mt-0"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.7, ease: easeIn }}
@@ -24,8 +24,8 @@ const FounderProfileDetail: FC<FounderProfileDetailProps> = ({ founder }) => {
       </div>
       <div className="prose max-w-full">
         {
-          founder?.description ?
-          <PortableText value={founder?.description} />
+          founder?.summary ?
+          <PortableText value={founder?.summary} />
           : "No descriptions"
         }
       </div>

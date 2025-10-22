@@ -14,7 +14,7 @@ interface FounderProfileImageProps {
 const FounderProfileImage: FC<FounderProfileImageProps> = ({ image }) => {
   return (
     <AnimationWrapper 
-        classname="w-full flex items-start justify-center"
+        classname="w-full lg:w-fit flex items-start md:items-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, ease: easeIn }}
@@ -29,7 +29,7 @@ const FounderProfileImage: FC<FounderProfileImageProps> = ({ image }) => {
           alt="Company Founder Image"
           width={398}
           height={597}
-          className="w-96 h-[597px] object-cover rounded-md"
+          className="w-[600px] object-cover rounded-md"
         />
         : null
       }
