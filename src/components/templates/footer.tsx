@@ -25,7 +25,7 @@ const Footer: FC<FooterProps> = async ({ logo }) => {
               height={53}
               src={urlFor(logo.image).auto("format").url()}
               alt="jilo-logo"
-              className="w-fit h-14 object-contain mb-5"
+              className="w-64 object-contain mb-5"
             />
           ) : (
             <Image
@@ -33,7 +33,7 @@ const Footer: FC<FooterProps> = async ({ logo }) => {
               height={53}
               src="/images/jilo-logo-small.png"
               alt="jilo-logo"
-              className="w-fit h-14 object-contain mb-5"
+              className="w-64 object-contain mb-5"
             />
           )}
           <div className="flex items-start lg:items-center gap-2 text-[#999999]">

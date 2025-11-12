@@ -1,11 +1,11 @@
 import ServiceCard from "@/components/composites/service-card";
 import { client } from "@/sanity/lib/client";
-import { SERVICES_QUERY } from "@/sanity/lib/queries";
+import { ALL_SERVICES_QUERY } from "@/sanity/lib/queries";
 
 const options = { next: { revalidate: 60 } };
 
 const ServicesList = async () => {
-  const services = await client.fetch(SERVICES_QUERY, {}, options);
+  const services = await client.fetch(ALL_SERVICES_QUERY, {}, options);
 
   return (
     <section className="w-full flex items-center justify-center py-20 px-8 lg:px-16 text-black">

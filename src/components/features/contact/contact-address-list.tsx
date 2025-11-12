@@ -26,17 +26,17 @@ const ContactAddressList: FC<ContactAddressListProps> = ({ addresses }) => {
       ) : (
         addresses.map((address, i) => (
           <div className="w-full flex flex-col items-center lg:items-start lg:flex-row px-5 lg:px-8 gap-10" key={i}>
-            {/* Map */}
+            {/* Map with Marker */}
             {address.location?.lat && address.location?.lng ? (
               <iframe
-                src={`https://www.google.com/maps/embed/v1/view?key=${process.env.NEXT_PUBLIC_GOOGLE_MAP_API}&center=${address.location.lat},${address.location.lng}&zoom=15`}
+                src={`https://www.google.com/maps?q=${address.location.lat},${address.location.lng}&z=15&output=embed`}
                 width="60%"
                 height="320"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-lg shadow-md"
+                className="rounded-lg shadow-md w-full lg:w-2/3"
                 title={`Map for ${address.name || 'Location'}`}
               />
             ) : (

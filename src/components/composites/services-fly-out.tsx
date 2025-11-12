@@ -42,7 +42,7 @@ const ServicesFlyOut = () => {
               </Link>
             ))}
             <Link className="blox text-sm hover:underline" href="/practice-areas">
-              Other Services
+              See All Practice Areas
             </Link>
           </>
         )}

@@ -53,7 +53,7 @@ const Navbar: FC<NavbarProps> = ({ logo }) => {
               alt="jilo-logo"
               width="400"
               height="60"
-              className="h-10 lg:h-14 w-fit object-contain"
+              className="w-64 lg:w-80 object-contain"
             />
           </Link>
         ) : (
@@ -63,7 +63,7 @@ const Navbar: FC<NavbarProps> = ({ logo }) => {
               alt="jilo-logo"
               width="400"
               height="60"
-              className="h-12 lg:h-14 w-fit object-contain"
+              className="w-64 lg:w-80 object-contain"
             />
           </Link>
         )}
