@@ -48,26 +48,26 @@ const Breadcrumb: FC<BreadcrumbProps> = ({
       : breadcrumbItems;
 
   const defaultStyles = {
-    container: "flex items-center space-x-2 text-sm text-gray-600",
-    item: "hover:text-[#E1BC1C] transition-colors duration-200",
-    activeItem: "text-[#E1BC1C] font-medium",
-    separator: "text-gray-400",
-    link: "flex items-center space-x-1 hover:underline",
-    ellipsis: "text-gray-400 cursor-default",
+    container: "flex items-center text-sm text-gray-600",
+    item: "hover:text-[#E1BC1C] transition-colors duration-200 truncate max-w-[200px] sm:max-w-none",
+    activeItem: "text-[#E1BC1C] font-medium truncate max-w-[200px] sm:max-w-none",
+    separator: "text-gray-400 flex-shrink-0 mx-1 sm:mx-2",
+    link: "flex items-center hover:underline truncate",
+    ellipsis: "text-gray-400 cursor-default flex-shrink-0",
   };
 
   return (
     <nav
-      className={`${defaultStyles.container} ${className}`}
+      className={`${defaultStyles.container} ${className} overflow-x-auto scrollbar-hide`}
       aria-label="Breadcrumb"
     >
-      <ol className="flex items-center space-x-2">
+      <ol className="flex items-center flex-nowrap min-w-0">
         {displayItems.map((item, index) => {
           const isLast = index === displayItems.length - 1;
           const isEllipsis = item.label === "...";
 
           return (
-            <li key={index} className="flex items-center space-x-2">
+            <li key={index} className="flex items-center shrink-0 min-w-0">
               {/* Breadcrumb Item */}
               {isEllipsis ? (
                 <span className={`${defaultStyles.ellipsis} ${itemClassName}`}>
@@ -77,17 +77,19 @@ const Breadcrumb: FC<BreadcrumbProps> = ({
                 <Link
                   href={item.href}
                   className={`${defaultStyles.link} ${defaultStyles.item} ${itemClassName}`}
+                  title={item.label}
                 >
-                  {item.icon && <span>{item.icon}</span>}
-                  <span>{item.label}</span>
+                  {item.icon && <span className="shrink-0">{item.icon}</span>}
+                  <span className="truncate">{item.label}</span>
                 </Link>
               ) : (
                 <span
-                  className={`${defaultStyles.activeItem} ${activeClassName} ${itemClassName} flex items-center space-x-1`}
+                  className={`${defaultStyles.activeItem} ${activeClassName} ${itemClassName} flex items-center`}
                   aria-current={isLast ? "page" : undefined}
+                  title={item.label}
                 >
-                  {item.icon && <span>{item.icon}</span>}
-                  <span>{item.label}</span>
+                  {item.icon && <span className="shrink-0">{item.icon}</span>}
+                  <span className="truncate">{item.label}</span>
                 </span>
               )}
 

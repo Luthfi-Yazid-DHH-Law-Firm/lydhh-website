@@ -317,6 +317,10 @@
                         {
                           "type": "string",
                           "value": "h4"
+                        },
+                        {
+                          "type": "string",
+                          "value": "blockquote"
                         }
                       ]
                     },
@@ -384,43 +388,6 @@
                     "value": {
                       "type": "string",
                       "value": "block"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "quote": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "author": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "_type": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string",
-                      "value": "blockquote"
                     }
                   }
                 },
@@ -605,6 +572,10 @@
                         {
                           "type": "string",
                           "value": "h4"
+                        },
+                        {
+                          "type": "string",
+                          "value": "blockquote"
                         }
                       ]
                     },
@@ -672,43 +643,6 @@
                     "value": {
                       "type": "string",
                       "value": "block"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "quote": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "author": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "_type": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string",
-                      "value": "blockquote"
                     }
                   }
                 },
@@ -1021,6 +955,10 @@
                         {
                           "type": "string",
                           "value": "h4"
+                        },
+                        {
+                          "type": "string",
+                          "value": "blockquote"
                         }
                       ]
                     },
@@ -1088,43 +1026,6 @@
                     "value": {
                       "type": "string",
                       "value": "block"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "quote": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "author": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "_type": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string",
-                      "value": "blockquote"
                     }
                   }
                 },
@@ -1309,6 +1210,10 @@
                         {
                           "type": "string",
                           "value": "h4"
+                        },
+                        {
+                          "type": "string",
+                          "value": "blockquote"
                         }
                       ]
                     },
@@ -1376,43 +1281,6 @@
                     "value": {
                       "type": "string",
                       "value": "block"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "quote": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "author": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "_type": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string",
-                      "value": "blockquote"
                     }
                   }
                 },
@@ -1641,6 +1509,10 @@
                         {
                           "type": "string",
                           "value": "h4"
+                        },
+                        {
+                          "type": "string",
+                          "value": "blockquote"
                         }
                       ]
                     },
@@ -1708,43 +1580,6 @@
                     "value": {
                       "type": "string",
                       "value": "block"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "quote": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "author": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "_type": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string",
-                      "value": "blockquote"
                     }
                   }
                 },
@@ -2057,6 +1892,10 @@
                         {
                           "type": "string",
                           "value": "h4"
+                        },
+                        {
+                          "type": "string",
+                          "value": "blockquote"
                         }
                       ]
                     },
@@ -2124,43 +1963,6 @@
                     "value": {
                       "type": "string",
                       "value": "block"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "quote": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "author": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "_type": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string",
-                      "value": "blockquote"
                     }
                   }
                 },
@@ -2746,6 +2548,10 @@
                         {
                           "type": "string",
                           "value": "h4"
+                        },
+                        {
+                          "type": "string",
+                          "value": "blockquote"
                         }
                       ]
                     },
@@ -2813,43 +2619,6 @@
                     "value": {
                       "type": "string",
                       "value": "block"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "quote": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "author": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "_type": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string",
-                      "value": "blockquote"
                     }
                   }
                 },
@@ -3220,6 +2989,10 @@
                         {
                           "type": "string",
                           "value": "h4"
+                        },
+                        {
+                          "type": "string",
+                          "value": "blockquote"
                         }
                       ]
                     },
@@ -3287,43 +3060,6 @@
                     "value": {
                       "type": "string",
                       "value": "block"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "quote": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "author": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    },
-                    "optional": true
-                  },
-                  "_type": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string",
-                      "value": "blockquote"
                     }
                   }
                 },
@@ -3563,6 +3299,10 @@
                     {
                       "type": "string",
                       "value": "h4"
+                    },
+                    {
+                      "type": "string",
+                      "value": "blockquote"
                     }
                   ]
                 },
@@ -3630,43 +3370,6 @@
                 "value": {
                   "type": "string",
                   "value": "block"
-                }
-              }
-            },
-            "rest": {
-              "type": "object",
-              "attributes": {
-                "_key": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "type": "object",
-            "attributes": {
-              "quote": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string"
-                },
-                "optional": true
-              },
-              "author": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string"
-                },
-                "optional": true
-              },
-              "_type": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string",
-                  "value": "blockquote"
                 }
               }
             },

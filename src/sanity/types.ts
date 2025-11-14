@@ -62,7 +62,7 @@ export type CompanyProfile = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -71,11 +71,6 @@ export type CompanyProfile = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -98,7 +93,7 @@ export type CompanyProfile = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -107,11 +102,6 @@ export type CompanyProfile = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -157,7 +147,7 @@ export type FounderProfile = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -166,11 +156,6 @@ export type FounderProfile = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -193,7 +178,7 @@ export type FounderProfile = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -202,11 +187,6 @@ export type FounderProfile = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -238,7 +218,7 @@ export type Value = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -247,11 +227,6 @@ export type Value = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -297,7 +272,7 @@ export type Services = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -306,11 +281,6 @@ export type Services = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -397,7 +367,7 @@ export type Member = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -406,11 +376,6 @@ export type Member = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -465,7 +430,7 @@ export type Article = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -474,11 +439,6 @@ export type Article = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -513,7 +473,7 @@ export type BlockContent = Array<{
     _type: "span";
     _key: string;
   }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "h4";
+  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
   listItem?: "bullet";
   markDefs?: Array<{
     href?: string;
@@ -522,11 +482,6 @@ export type BlockContent = Array<{
   }>;
   level?: number;
   _type: "block";
-  _key: string;
-} | {
-  quote?: string;
-  author?: string;
-  _type: "blockquote";
   _key: string;
 } | {
   asset?: {
@@ -722,7 +677,7 @@ export type MEMBER_QUERYResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -731,11 +686,6 @@ export type MEMBER_QUERYResult = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -792,7 +742,7 @@ export type FOUNDER_PROFILEResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -801,11 +751,6 @@ export type FOUNDER_PROFILEResult = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -828,7 +773,7 @@ export type FOUNDER_PROFILEResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -837,11 +782,6 @@ export type FOUNDER_PROFILEResult = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -939,7 +879,7 @@ export type ARTICLE_QUERYResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -948,11 +888,6 @@ export type ARTICLE_QUERYResult = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -1044,7 +979,7 @@ export type SERVICE_QUERYResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -1053,11 +988,6 @@ export type SERVICE_QUERYResult = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -1098,7 +1028,7 @@ export type COMPANY_VALUES_QUERYResult = Array<{
       _type: "span";
       _key: string;
     }>;
-    style?: "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -1107,11 +1037,6 @@ export type COMPANY_VALUES_QUERYResult = Array<{
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -1140,7 +1065,7 @@ export type COMPANY_PROFILE_QUERYResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -1149,11 +1074,6 @@ export type COMPANY_PROFILE_QUERYResult = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -1176,7 +1096,7 @@ export type COMPANY_PROFILE_QUERYResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -1185,11 +1105,6 @@ export type COMPANY_PROFILE_QUERYResult = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    quote?: string;
-    author?: string;
-    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
