@@ -62,7 +62,7 @@ export type CompanyProfile = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -71,6 +71,11 @@ export type CompanyProfile = {
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -93,7 +98,7 @@ export type CompanyProfile = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -102,6 +107,11 @@ export type CompanyProfile = {
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -147,7 +157,7 @@ export type FounderProfile = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -156,6 +166,11 @@ export type FounderProfile = {
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -178,7 +193,7 @@ export type FounderProfile = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -187,6 +202,11 @@ export type FounderProfile = {
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -218,7 +238,7 @@ export type Value = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -227,6 +247,11 @@ export type Value = {
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -272,7 +297,7 @@ export type Services = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -281,6 +306,11 @@ export type Services = {
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -367,7 +397,7 @@ export type Member = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -376,6 +406,11 @@ export type Member = {
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -400,6 +435,7 @@ export type Article = {
   _updatedAt: string;
   _rev: string;
   title?: string;
+  author?: string;
   slug?: Slug;
   mainImage?: {
     asset?: {
@@ -429,7 +465,7 @@ export type Article = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -438,6 +474,11 @@ export type Article = {
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -472,7 +513,7 @@ export type BlockContent = Array<{
     _type: "span";
     _key: string;
   }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+  style?: "normal" | "h1" | "h2" | "h3" | "h4";
   listItem?: "bullet";
   markDefs?: Array<{
     href?: string;
@@ -481,6 +522,11 @@ export type BlockContent = Array<{
   }>;
   level?: number;
   _type: "block";
+  _key: string;
+} | {
+  quote?: string;
+  author?: string;
+  _type: "blockquote";
   _key: string;
 } | {
   asset?: {
@@ -676,7 +722,7 @@ export type MEMBER_QUERYResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -685,6 +731,11 @@ export type MEMBER_QUERYResult = {
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -741,7 +792,7 @@ export type FOUNDER_PROFILEResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -750,6 +801,11 @@ export type FOUNDER_PROFILEResult = {
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -772,7 +828,7 @@ export type FOUNDER_PROFILEResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -781,6 +837,11 @@ export type FOUNDER_PROFILEResult = {
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -798,7 +859,7 @@ export type FOUNDER_PROFILEResult = {
   }> | null;
 } | null;
 // Variable: ARTICLES_QUERY
-// Query: *[_type == "article" && defined(slug.current)][0...6]{  _id, title, slug, mainImage, publishedAt, categories}
+// Query: *[_type == "article" && defined(slug.current)] | order(publishedAt desc)[0...6]{  _id, title, slug, mainImage, publishedAt, categories}
 export type ARTICLES_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -854,9 +915,10 @@ export type ARTICLES_PAGINATED_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: ARTICLE_QUERY
-// Query: *[_type == "article" && slug.current == $slug][0]{  title,  mainImage,  body,  categories,  slug,  publishedAt}
+// Query: *[_type == "article" && slug.current == $slug][0]{  title,  author,  mainImage,  body,  categories[]-> {    title,    slug  },  slug,  publishedAt}
 export type ARTICLE_QUERYResult = {
   title: string | null;
+  author: string | null;
   mainImage: {
     asset?: {
       _ref: string;
@@ -877,7 +939,7 @@ export type ARTICLE_QUERYResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -886,6 +948,11 @@ export type ARTICLE_QUERYResult = {
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -902,11 +969,8 @@ export type ARTICLE_QUERYResult = {
     _key: string;
   }> | null;
   categories: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
+    title: string | null;
+    slug: Slug | null;
   }> | null;
   slug: Slug | null;
   publishedAt: string | null;
@@ -980,7 +1044,7 @@ export type SERVICE_QUERYResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -989,6 +1053,11 @@ export type SERVICE_QUERYResult = {
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -1029,7 +1098,7 @@ export type COMPANY_VALUES_QUERYResult = Array<{
       _type: "span";
       _key: string;
     }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -1038,6 +1107,11 @@ export type COMPANY_VALUES_QUERYResult = Array<{
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -1066,7 +1140,7 @@ export type COMPANY_PROFILE_QUERYResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -1075,6 +1149,11 @@ export type COMPANY_PROFILE_QUERYResult = {
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -1097,7 +1176,7 @@ export type COMPANY_PROFILE_QUERYResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "h1" | "h2" | "h3" | "h4" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -1106,6 +1185,11 @@ export type COMPANY_PROFILE_QUERYResult = {
     }>;
     level?: number;
     _type: "block";
+    _key: string;
+  } | {
+    quote?: string;
+    author?: string;
+    _type: "blockquote";
     _key: string;
   } | {
     asset?: {
@@ -1157,9 +1241,9 @@ declare module "@sanity/client" {
     "*[_type == \"member\" && position != \"Founder\"] | order(position){\n  _id,\n  name,\n  image,\n  position,\n  slug,\n}": MEMBERS_NO_FOUNDER_QUERYResult;
     "*[_type == \"member\" && slug.current == $slug][0]{\n  bio,\n  image,\n  name,\n  position,\n  slug\n}": MEMBER_QUERYResult;
     "*[_type == \"founderProfile\"][0]{\n  name,\n  mainImage,\n  slug,\n  summary,\n  description\n}": FOUNDER_PROFILEResult;
-    "*[_type == \"article\" && defined(slug.current)][0...6]{\n  _id, title, slug, mainImage, publishedAt, categories\n}": ARTICLES_QUERYResult;
+    "*[_type == \"article\" && defined(slug.current)] | order(publishedAt desc)[0...6]{\n  _id, title, slug, mainImage, publishedAt, categories\n}": ARTICLES_QUERYResult;
     "*[_type == \"article\" && defined(slug.current)\n    && ($search == null || lower(title) match lower($search) + \"*\")\n    && ($category == null || $category in categories[]->slug.current)] | order(publishedAt desc) [0...$end]{\n  _id, title, slug, mainImage, publishedAt, categories\n}": ARTICLES_PAGINATED_QUERYResult;
-    "*[_type == \"article\" && slug.current == $slug][0]{\n  title,\n  mainImage,\n  body,\n  categories,\n  slug,\n  publishedAt\n}": ARTICLE_QUERYResult;
+    "*[_type == \"article\" && slug.current == $slug][0]{\n  title,\n  author,\n  mainImage,\n  body,\n  categories[]-> {\n    title,\n    slug\n  },\n  slug,\n  publishedAt\n}": ARTICLE_QUERYResult;
     "count(*[_type == \"article\" && defined(slug.current)\n  && ($search == null || lower(title) match lower($search) + \"*\" || lower(pt::text(body)) match lower($search) + \"*\")\n  && ($category == null || $category in categories[]->slug.current)])": ARTICLES_COUNT_QUERYResult;
     "*[_type == \"services\" && defined(slug.current)][0...8]{\n  _id, name, slug, image, position\n}": SERVICES_QUERYResult;
     "*[_type == \"services\" && defined(slug.current)]{\n  _id, name, slug, image, position\n}": ALL_SERVICES_QUERYResult;

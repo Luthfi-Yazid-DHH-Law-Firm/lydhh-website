@@ -19,5 +19,11 @@ export const BlockImageComponent: PortableTextComponents = {
           height="400"
         />
       ) : null,
+    blockquote: ({value}) => (
+      <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4">
+        <p>{value.quote}</p>
+        {value.author && <cite className="text-sm text-gray-600">— {value.author}</cite>}
+      </blockquote>
+    ),
   },
 };

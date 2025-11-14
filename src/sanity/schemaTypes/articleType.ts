@@ -12,6 +12,10 @@ export const articleType = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'author',
+      type: 'string',
+    }),
+    defineField({
       name: 'slug',
       type: 'slug',
       options: {

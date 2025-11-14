@@ -33,7 +33,7 @@ export const FOUNDER_PROFILE =
 }`);
 
 export const ARTICLES_QUERY =
-  defineQuery(`*[_type == "article" && defined(slug.current)][0...6]{
+  defineQuery(`*[_type == "article" && defined(slug.current)] | order(publishedAt desc)[0...6]{
   _id, title, slug, mainImage, publishedAt, categories
 }`);
 
@@ -47,9 +47,13 @@ export const ARTICLES_PAGINATED_QUERY =
 export const ARTICLE_QUERY =
   defineQuery(`*[_type == "article" && slug.current == $slug][0]{
   title,
+  author,
   mainImage,
   body,
-  categories,
+  categories[]-> {
+    title,
+    slug
+  },
   slug,
   publishedAt
 }`);
