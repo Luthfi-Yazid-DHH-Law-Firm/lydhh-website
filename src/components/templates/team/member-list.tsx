@@ -1,6 +1,7 @@
 import MemberCard from "@/components/composites/member-card";
 import { client } from "@/sanity/lib/client";
 import { MEMBERS_NO_FOUNDER_QUERY } from "@/sanity/lib/queries";
+import { MemberProps } from "@/types/member-type";
 
 const options = { next: { revalidate: 60 } };
 
@@ -28,7 +29,7 @@ const MemberList = async () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {
-                members.map((member, i) => (
+                members.map((member: MemberProps, i) => (
                     <MemberCard key={i} member={member}/>
                 ))
             }

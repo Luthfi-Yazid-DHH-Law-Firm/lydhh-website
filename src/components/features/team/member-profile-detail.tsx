@@ -1,7 +1,7 @@
 import MemberBio from "@/components/composites/team/member-bio";
 import MemberProfileImage from "@/components/composites/team/member-profile-image";
 import { MEMBER_QUERYResult } from "@/sanity/types";
-import React, { FC } from "react";
+import { FC } from "react";
 
 interface MemberProfileDetailProps {
   member: MEMBER_QUERYResult;

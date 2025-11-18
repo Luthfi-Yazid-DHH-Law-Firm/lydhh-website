@@ -1,12 +1,12 @@
 import { defineQuery } from "next-sanity";
 
 export const MEMBERS_QUERY =
-  defineQuery(`*[_type == "member" && defined(slug.current)] | order(position)[0...6]{
+  defineQuery(`*[_type == "member" && defined(slug.current)] | order(publishedAt asc)[0...6]{
   _id, name, slug, image, position
 }`);
 
 export const MEMBERS_NO_FOUNDER_QUERY =
-  defineQuery(`*[_type == "member" && position != "Founder"] | order(position){
+  defineQuery(`*[_type == "member"] | order(publishedAt asc){
   _id,
   name,
   image,

@@ -360,7 +360,7 @@ export type Member = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  bio?: Array<{
+  biography?: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -391,6 +391,38 @@ export type Member = {
     _type: "image";
     _key: string;
   }>;
+  background?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+  publishedAt?: string;
 };
 
 export type Article = {
@@ -628,7 +660,7 @@ export type AllSanitySchemaTypes = Logo | CompanyAddress | CompanyProfile | Foun
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: MEMBERS_QUERY
-// Query: *[_type == "member" && defined(slug.current)] | order(position)[0...6]{  _id, name, slug, image, position}
+// Query: *[_type == "member" && defined(slug.current)] | order(publishedAt asc)[0...6]{  _id, name, slug, image, position}
 export type MEMBERS_QUERYResult = Array<{
   _id: string;
   name: string | null;
@@ -648,7 +680,7 @@ export type MEMBERS_QUERYResult = Array<{
   position: string | null;
 }>;
 // Variable: MEMBERS_NO_FOUNDER_QUERY
-// Query: *[_type == "member" && position != "Founder"] | order(position){  _id,  name,  image,  position,  slug,}
+// Query: *[_type == "member"] | order(publishedAt asc){  _id,  name,  image,  position,  slug,}
 export type MEMBERS_NO_FOUNDER_QUERYResult = Array<{
   _id: string;
   name: string | null;
@@ -670,37 +702,7 @@ export type MEMBERS_NO_FOUNDER_QUERYResult = Array<{
 // Variable: MEMBER_QUERY
 // Query: *[_type == "member" && slug.current == $slug][0]{  bio,  image,  name,  position,  slug}
 export type MEMBER_QUERYResult = {
-  bio: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }> | null;
+  bio: null;
   image: {
     asset?: {
       _ref: string;
@@ -1152,8 +1154,8 @@ export type COMPANY_LOGO_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"member\" && defined(slug.current)] | order(position)[0...6]{\n  _id, name, slug, image, position\n}": MEMBERS_QUERYResult;
-    "*[_type == \"member\" && position != \"Founder\"] | order(position){\n  _id,\n  name,\n  image,\n  position,\n  slug,\n}": MEMBERS_NO_FOUNDER_QUERYResult;
+    "*[_type == \"member\" && defined(slug.current)] | order(publishedAt asc)[0...6]{\n  _id, name, slug, image, position\n}": MEMBERS_QUERYResult;
+    "*[_type == \"member\"] | order(publishedAt asc){\n  _id,\n  name,\n  image,\n  position,\n  slug,\n}": MEMBERS_NO_FOUNDER_QUERYResult;
     "*[_type == \"member\" && slug.current == $slug][0]{\n  bio,\n  image,\n  name,\n  position,\n  slug\n}": MEMBER_QUERYResult;
     "*[_type == \"founderProfile\"][0]{\n  name,\n  mainImage,\n  slug,\n  summary,\n  description\n}": FOUNDER_PROFILEResult;
     "*[_type == \"article\" && defined(slug.current)] | order(publishedAt desc)[0...6]{\n  _id, title, slug, mainImage, publishedAt, categories\n}": ARTICLES_QUERYResult;

@@ -24,7 +24,15 @@ const MemberProfileImage: FC<MemberProfileImageProps> = ({
           height={384}
           className="w-full h-96 object-cover"
         />
-      ) : null}
+      ) : (
+        <Image
+          className="w-full h-96 object-cover"
+          src="/images/Placeholder_Person.jpg"
+          alt={name ?? "Placeholder Person"}
+          width={320}
+          height={384}
+        />
+      )}
       <div className="w-full flex flex-col items-center justify-center p-5 bg-linear-to-r from-[#D5AA6D] to-[#9B6F45] text-white text-center">
         <h3 className="text-xl font-medium">{name}</h3>
         <p className="text-sm">{position}</p>

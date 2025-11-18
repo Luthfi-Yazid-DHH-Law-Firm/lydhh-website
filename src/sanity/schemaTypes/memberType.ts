@@ -30,8 +30,16 @@ export const memberType = defineType({
       },
     }),
     defineField({
-      name: 'bio',
+      name: 'biography',
       type: 'blockContent'
+    }),
+    defineField({
+      name: 'background',
+      type: 'blockContent'
+    }),
+    defineField({
+      name: 'publishedAt',
+      type: 'datetime',
     }),
   ],
   preview: {
