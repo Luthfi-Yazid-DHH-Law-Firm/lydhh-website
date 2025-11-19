@@ -29,7 +29,7 @@ const FounderProfileImage: FC<FounderProfileImageProps> = ({ image }) => {
           alt="Company Founder Image"
           width={398}
           height={597}
-          className="w-[600px] object-cover rounded-md"
+          className="w-[600px] h-[600px] object-cover rounded-md"
         />
         : null
       }

@@ -20,8 +20,15 @@ const AnimationWrapper: React.FC<AnimationWrapperProps> = ({
 }) => {
     const ref = useRef<HTMLDivElement>(null);
     const [inView, setInView] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    useEffect(() => {
+        if (!isMounted) return;
+
         const currentRef = ref.current;
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -44,14 +51,14 @@ const AnimationWrapper: React.FC<AnimationWrapperProps> = ({
                 observer.unobserve(currentRef);
             }
         };
-    }, []);
+    }, [isMounted]);
 
     return (
         <AnimatePresence>
             <motion.div
                 ref={ref}
                 initial={initial}
-                animate={inView ? animate : initial}
+                animate={isMounted && inView ? animate : initial}
                 transition={transition}
                 className={classname}
             >

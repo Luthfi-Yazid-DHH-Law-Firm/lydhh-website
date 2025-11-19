@@ -4,6 +4,7 @@ import AnimationWrapper from "@/components/wrappers/animation-wrapper";
 import { FOUNDER_PROFILEResult } from "@/sanity/types";
 import { easeIn } from "motion";
 import { PortableText } from "next-sanity";
+import { usePathname } from "next/navigation";
 import { FC } from "react";
 
 interface FounderProfileAchievementListProps {
@@ -13,9 +14,11 @@ interface FounderProfileAchievementListProps {
 const FounderProfileAchievementList: FC<FounderProfileAchievementListProps> = ({
   founder,
 }) => {
+  const pathname = usePathname();
+  const isFounderPage = pathname.includes("/our-founder");
   return (
     <AnimationWrapper
-      classname="w-full flex flex-col items-start justify-center gap-4 mt-10"
+      classname={`w-full flex-col items-start justify-center gap-4 mt-10 ${isFounderPage ? "flex" : "hidden"}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.7, ease: easeIn }}
