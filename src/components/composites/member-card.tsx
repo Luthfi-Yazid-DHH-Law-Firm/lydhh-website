@@ -14,7 +14,7 @@ interface MemberCardProps {
 
 const MemberCard: FC<MemberCardProps> = ({ member, founder }) => {
   const router = useRouter();
-  const image = member?.image ?? founder?.mainImage;
+  const image = member?.image ?? founder?.secondImage;
   const altText = member?.name ?? founder?.name ?? "";
   const memberRoute = member ? `/team/${member?.slug?.current}` : "/our-founder";
 

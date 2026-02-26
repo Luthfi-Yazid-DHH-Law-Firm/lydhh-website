@@ -139,6 +139,19 @@ export type FounderProfile = {
     alt?: string;
     _type: "image";
   };
+  secondImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
   slug?: Slug;
   summary?: Array<{
     children?: Array<{
@@ -720,10 +733,23 @@ export type MEMBER_QUERYResult = {
   slug: Slug | null;
 } | null;
 // Variable: FOUNDER_PROFILE
-// Query: *[_type == "founderProfile"][0]{  name,  mainImage,  slug,  summary,  description}
+// Query: *[_type == "founderProfile"][0]{  name,  mainImage,  secondImage,  slug,  summary,  description}
 export type FOUNDER_PROFILEResult = {
   name: string | null;
   mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  secondImage: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -1157,7 +1183,7 @@ declare module "@sanity/client" {
     "*[_type == \"member\" && defined(slug.current)] | order(publishedAt asc)[0...6]{\n  _id, name, slug, image, position\n}": MEMBERS_QUERYResult;
     "*[_type == \"member\"] | order(publishedAt asc){\n  _id,\n  name,\n  image,\n  position,\n  slug,\n}": MEMBERS_NO_FOUNDER_QUERYResult;
     "*[_type == \"member\" && slug.current == $slug][0]{\n  bio,\n  image,\n  name,\n  position,\n  slug\n}": MEMBER_QUERYResult;
-    "*[_type == \"founderProfile\"][0]{\n  name,\n  mainImage,\n  slug,\n  summary,\n  description\n}": FOUNDER_PROFILEResult;
+    "*[_type == \"founderProfile\"][0]{\n  name,\n  mainImage,\n  secondImage,\n  slug,\n  summary,\n  description\n}": FOUNDER_PROFILEResult;
     "*[_type == \"article\" && defined(slug.current)] | order(publishedAt desc)[0...6]{\n  _id, title, slug, mainImage, publishedAt, categories\n}": ARTICLES_QUERYResult;
     "*[_type == \"article\" && defined(slug.current)\n    && ($search == null || lower(title) match lower($search) + \"*\")\n    && ($category == null || $category in categories[]->slug.current)] | order(publishedAt desc) [0...$end]{\n  _id, title, slug, mainImage, publishedAt, categories\n}": ARTICLES_PAGINATED_QUERYResult;
     "*[_type == \"article\" && slug.current == $slug][0]{\n  title,\n  author,\n  mainImage,\n  body,\n  categories[]-> {\n    title,\n    slug\n  },\n  slug,\n  publishedAt\n}": ARTICLE_QUERYResult;

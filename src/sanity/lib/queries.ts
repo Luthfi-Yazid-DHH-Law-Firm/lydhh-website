@@ -27,6 +27,7 @@ export const FOUNDER_PROFILE =
   defineQuery(`*[_type == "founderProfile"][0]{
   name,
   mainImage,
+  secondImage,
   slug,
   summary,
   description
