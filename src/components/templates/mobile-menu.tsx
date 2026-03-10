@@ -112,7 +112,7 @@ const MobileMenu: FC<MobileMenuProps> = ({menuServicesList}) => {
                     <Menu className="w-6 h-6 text-gray-700" />
                 </button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full sm:w-[400px] p-0 bg-red-600 [&>button[data-state]]:text-white [&>button[data-state]]:hover:bg-red-700 [&>button>svg]:stroke-white">
+            <SheetContent side="right" className="w-full sm:w-[400px] p-0 bg-red-950 [&>button[data-state]]:text-white [&>button[data-state]]:hover:bg-red-700 [&>button>svg]:stroke-white">
                 {/* Main Menu */}
                 <SheetTitle></SheetTitle>
                 <div
