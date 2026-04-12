@@ -1,12 +1,17 @@
 import CompanyProfileDetail from "@/components/features/about-us/company-profile-detail";
 import CompanyProfileImage from "@/components/features/about-us/company-profile-image";
+import {client} from "@/sanity/lib/client";
+import {COMPANY_PROFILE_QUERY} from "@/sanity/lib/queries";
 
-const CompanyProfile = () => {
+const options = { next: { revalidate: 60 } };
+
+const CompanyProfile = async () => {
+  const companyProfile = await client.fetch(COMPANY_PROFILE_QUERY, {}, options);
   return (
     <section className="w-full flex items-center justify-center py-20 px-8 lg:px-16">
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 space-y-10 lg:space-y-0">
         <CompanyProfileImage />
-        <CompanyProfileDetail />
+        <CompanyProfileDetail profile={companyProfile} />
       </div>
     </section>
   );
