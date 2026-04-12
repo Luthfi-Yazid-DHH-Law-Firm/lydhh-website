@@ -10,8 +10,8 @@ const MemberBio: FC<MemberBioProps> = ({ member }) => {
   return (
     <div className="prose">
       {
-        member?.bio ?
-        <PortableText value={member.bio} />
+        member?.biography ?
+        <PortableText value={member.biography} />
         : <p>No Biodata Provided</p>
       }
     </div>

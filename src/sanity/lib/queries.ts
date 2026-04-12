@@ -16,7 +16,8 @@ export const MEMBERS_NO_FOUNDER_QUERY =
 
 export const MEMBER_QUERY =
   defineQuery(`*[_type == "member" && slug.current == $slug][0]{
-  bio,
+  biography,
+  background,
   image,
   name,
   position,
