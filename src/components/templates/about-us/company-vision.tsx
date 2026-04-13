@@ -174,7 +174,7 @@ export default function TeamAndVision() {
                                         Monthly Publication
                                     </p>
                                     <p className="text-white text-base font-medium italic font-serif mb-1">
-                                        "Notes from the Bar"
+                                        &#34;Notes from the Bar&#34;
                                     </p>
                                     <p className="text-gray-400 text-sm leading-relaxed">
                                         Our curated legal insights keeping clients informed, prepared,
