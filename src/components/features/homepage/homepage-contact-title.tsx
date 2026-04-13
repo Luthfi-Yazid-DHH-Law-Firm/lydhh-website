@@ -2,10 +2,10 @@
 
 import AnimationWrapper from "@/components/wrappers/animation-wrapper";
 import { easeIn } from "motion";
-import { Playfair_Display } from "next/font/google";
+import { EB_Garamond } from "next/font/google";
 
-const playFairDisplay = Playfair_Display({
-  weight: ["700"],
+const ebGaramond = EB_Garamond({
+  weight: ["600"],
   style: ["italic"],
   subsets: ["latin"],
   preload: false,
@@ -13,26 +13,30 @@ const playFairDisplay = Playfair_Display({
 
 const HomepageContactTitle = () => {
   return (
-    <AnimationWrapper
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.7, ease: easeIn }}
-    >
-      <div className="w-full text-center flex flex-col items-center justify-center">
-        <h6 className="text-base font-medium text-[#E1BC1C] mb-4">
-          Contact Us
-        </h6>
-        <h3 className="mb-2 text-3xl font-medium">
-          Feel free to ask something <br /> We are{" "}
-          <span
-            className={`${playFairDisplay.className} bg-linear-to-r from-[#E1BC1C] to-[#a98e16] bg-clip-text text-transparent`}
-          >
-            here
+      <AnimationWrapper
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: easeIn }}
+      >
+        <div className="flex flex-col">
+          <p className="text-[#E1BC1C] text-xs tracking-[0.24em] uppercase font-medium mb-5">
+            Contact Us
+          </p>
+          <h2 className="text-white text-3xl lg:text-4xl font-light leading-snug mb-4">
+            Feel free to ask something.
+            <br />
+            We are{" "}
+            <span className={`${ebGaramond.className} italic text-[#E1BC1C]`}>
+            here.
           </span>
-        </h3>
-        <div className="h-1 w-12 bg-linear-to-r from-[#E1BC1C] to-[#a98e16] rounded" />
-      </div>
-    </AnimationWrapper>
+          </h2>
+          <div className="w-9 h-0.5 bg-gradient-to-r from-[#E1BC1C] to-[#a98e16] rounded mb-7" />
+          <p className="text-white/55 text-sm leading-relaxed max-w-xs">
+            Our team of experienced legal professionals is ready to discuss your
+            needs and provide the guidance you require.
+          </p>
+        </div>
+      </AnimationWrapper>
   );
 };
 
