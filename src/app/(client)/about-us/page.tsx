@@ -2,7 +2,9 @@ import CompanyApproaches from "@/components/templates/about-us/company-approache
 import CompanyProfile from "@/components/templates/about-us/company-profile";
 import HeroSmall from "@/components/templates/hero-small";
 import HomepageTeam from "@/components/templates/homepage/homepage-team";
+import TeamAndVision from "@/components/templates/about-us/company-vision";
 import { Metadata } from "next";
+import BeyondTheCourtroom from "@/components/templates/about-us/beyond-the-court-room";
 
 export const metadata: Metadata = {
   title: "About Us | Luthfi Yazid DHH Law Firm",
@@ -15,6 +17,8 @@ export default function AboutPage() {
     <>
       <HeroSmall />
       <CompanyProfile />
+      <TeamAndVision />
+      <BeyondTheCourtroom />
       <CompanyApproaches />
       <HomepageTeam />
     </>
