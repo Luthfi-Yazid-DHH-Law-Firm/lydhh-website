@@ -8,7 +8,7 @@ import { Resend } from "resend";
 import { v4 as generateID } from "uuid";
 import { z } from "zod";
 
-const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY!);
+const resend = new Resend(process.env.RESEND_API_KEY!);
 
 const emailSchema = contactFormSchema;
 type EmailRequest = ContactFormData;
@@ -22,11 +22,10 @@ function validateEnvironment() {
   }
 }
 
-// Helper function to send multiple emails
 async function sendEmails(emailData: EmailRequest) {
   const { name, email, subject, message } = emailData;
   const mailID = generateID();
-  
+
   const adminEmail = {
     from: email,
     to: process.env.ADMIN_EMAIL!,
@@ -51,7 +50,6 @@ async function sendEmails(emailData: EmailRequest) {
     customer: { success: false, id: null as string | null, error: null as string | null },
   };
 
-  // Process admin email result
   if (adminResult.status === "fulfilled") {
     const { data, error } = adminResult.value;
     if (error) {
@@ -59,7 +57,7 @@ async function sendEmails(emailData: EmailRequest) {
       console.error("Admin email error:", error);
     } else {
       results.admin.success = true;
-      results.admin.id = data?.id || null;
+      results.admin.id = data?.id ?? null;
       console.log("Admin email sent successfully:", data?.id);
     }
   } else {
@@ -67,7 +65,6 @@ async function sendEmails(emailData: EmailRequest) {
     console.error("Admin email promise rejected:", adminResult.reason);
   }
 
-  // Process customer email result
   if (customerResult.status === "fulfilled") {
     const { data, error } = customerResult.value;
     if (error) {
@@ -75,7 +72,7 @@ async function sendEmails(emailData: EmailRequest) {
       console.error("Customer email error:", error);
     } else {
       results.customer.success = true;
-      results.customer.id = data?.id || null;
+      results.customer.id = data?.id ?? null;
       console.log("Customer email sent successfully:", data?.id);
     }
   } else {
@@ -95,83 +92,80 @@ export async function POST(req: NextRequest) {
 
     const emailResults = await sendEmails(validatedData);
 
-    const adminSuccess = emailResults.admin.success;
-    const customerSuccess = emailResults.customer.success;
+    const { admin: adminEmail, customer: customerEmail } = emailResults;
 
-    console.log(adminSuccess);
-    console.log(customerSuccess);
-
-    if (!adminSuccess) {
+    if (!adminEmail.success) {
       throw new EmailServiceError(
-        "Your message could not be processed at this time. Please try again or contact us directly.",
-        500
+          "Your message could not be processed at this time. Please try again or contact us directly.",
+          500
       );
     }
 
-    if (adminSuccess && customerSuccess) {
+    if (adminEmail.success && customerEmail.success) {
       return NextResponse.json(
-        { 
-          message: "Message sent successfully! You'll receive a confirmation email shortly.",
-          details: {
-            adminEmailId: emailResults.admin.id,
-            customerEmailId: emailResults.customer.id
-          }
-        },
-        { status: 200 }
+          {
+            message: "Message sent successfully! You'll receive a confirmation email shortly.",
+            details: {
+              adminEmailId: adminEmail.id,
+              customerEmailId: customerEmail.id,
+            },
+          },
+          { status: 200 }
       );
-    } else if (adminSuccess && !customerSuccess) {
-      return NextResponse.json(
-        { 
+    }
+
+    // Admin succeeded but customer confirmation failed — still a success from the user's perspective
+    return NextResponse.json(
+        {
           message: "Your message was received successfully! We'll get back to you soon. (Note: Confirmation email delivery failed)",
           details: {
-            adminEmailId: emailResults.admin.id,
-            customerEmailError: emailResults.customer.error
-          }
+            adminEmailId: adminEmail.id,
+            customerEmailError: customerEmail.error,
+          },
         },
         { status: 200 }
-      );
-    }
+    );
 
   } catch (error: unknown) {
     console.error("Email API error:", error);
 
     if (error instanceof z.ZodError) {
-      throw NextResponse.json(
-        { 
-          message: "Invalid input data",
-          errors: error.errors.map(err => ({
-            field: err.path.join('.'),
-            message: err.message
-          }))
-        },
-        { status: 400 }
+      return NextResponse.json(
+          {
+            message: "Invalid input data",
+            errors: error.errors.map((err) => ({
+              field: err.path.join("."),
+              message: err.message,
+            })),
+          },
+          { status: 400 }
       );
     }
 
     if (error instanceof EmailServiceError) {
-      throw NextResponse.json(
-        { message: error.message },
-        { status: error.statusCode }
+      return NextResponse.json(
+          { message: error.message },
+          { status: error.statusCode }
       );
     }
 
     if (error instanceof SyntaxError) {
-      throw NextResponse.json(
-        { message: "Invalid JSON format" },
-        { status: 400 }
+      return NextResponse.json(
+          { message: "Invalid JSON format" },
+          { status: 400 }
       );
     }
 
-    throw NextResponse.json(
-      { message: getErrorMessage(error) },
-      { status: 500 }
+    return NextResponse.json(
+        { message: getErrorMessage(error) },
+        { status: 500 }
     );
   }
 }
 
 export async function GET() {
   return NextResponse.json(
-    { message: "Method not allowed" },
-    { status: 405 }
+      { message: "Method not allowed" },
+      { status: 405 }
   );
 }
