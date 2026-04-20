@@ -23,7 +23,7 @@ const options = { next: { revalidate: 60 } };
 const ClientLayout = async ({ children }: { children: ReactNode }) => {
     const menuServicesList = await client.fetch(SERVICES_QUERY, {}, options);
     return (
-        <div className={`min-h-screen w-full relative bg-[#f4f4f4] ${poppins.className}`}>
+        <div className={`min-h-screen w-full relative bg-[#f9f7f4] ${poppins.className}`}>
             <Navbar menuServicesList={menuServicesList} />
             { children }
             <Footer menuServicesList={menuServicesList} />

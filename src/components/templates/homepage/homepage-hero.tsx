@@ -1,13 +1,13 @@
-import HeroBackground from '@/components/features/homepage/hero-background';
-import HomepageHeroText from '@/components/features/homepage/homepage-hero-text';
+import HeroBackground from "@/components/features/homepage/hero-background";
+import HomepageHeroText from "@/components/features/homepage/homepage-hero-text";
 
 const HomepageHero = () => {
-  return (
-    <div className="w-full h-screen relative">
-        <HeroBackground />
-        <HomepageHeroText />
-    </div>
-  );
+    return (
+        <div className="w-full h-screen relative overflow-hidden">
+            <HeroBackground />
+            <HomepageHeroText />
+        </div>
+    );
 };
 
 export default HomepageHero;

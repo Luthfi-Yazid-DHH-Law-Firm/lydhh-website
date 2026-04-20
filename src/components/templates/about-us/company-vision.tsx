@@ -23,7 +23,7 @@ export default function TeamAndVision() {
     return (
         <section
             ref={sectionRef}
-            className="relative py-20 overflow-hidden bg-black"
+            className="relative py-20 overflow-hidden bg-[#0a0c0f]"
         >
             {/* Subtle background texture overlay */}
             <div

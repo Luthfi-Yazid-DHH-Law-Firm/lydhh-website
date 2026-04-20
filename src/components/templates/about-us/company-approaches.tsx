@@ -9,7 +9,7 @@ const CompanyApproaches = async () => {
     const values = await client.fetch(COMPANY_VALUES_QUERY, {}, options);
 
     return (
-        <section className="relative w-full flex items-center justify-center py-20 px-8 lg:px-16 bg-black text-white overflow-hidden">
+        <section className="relative w-full flex items-center justify-center py-20 px-8 lg:px-16 bg-[#0a0c0f] text-white overflow-hidden">
             {/* Subtle radial glow at top center */}
             <div
                 className="absolute inset-0 pointer-events-none"

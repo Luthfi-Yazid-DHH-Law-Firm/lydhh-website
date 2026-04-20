@@ -7,28 +7,36 @@ import HomepageServicesGrid from "@/components/features/homepage/homepage-servic
 const options = { next: { revalidate: 60 } };
 
 const HomepageService = async () => {
-  const services = await client.fetch(SERVICES_QUERY, {}, options );
+    const services = await client.fetch(SERVICES_QUERY, {}, options);
 
-  return (
-    <section
-      className="w-full flex items-center justify-center py-20 px-8 lg:px-16 bg-[#5E0302]/85 bg-cover bg-center bg-no-repeat text-white"
-      style={{
-        backgroundImage: "url(/images/bg-parallax1-1.webp)",
-        backgroundBlendMode: "overlay"
-      }}
-    >
-      <div className="2xl:w-[1440px] w-full">
-        <HomepageServicesTitle />
+    return (
+        <section className="relative w-full bg-[#0a0c0f] text-white py-20 overflow-x-hidden">
+            {/* Subtle radial glow at the bottom */}
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                    background:
+                        "radial-gradient(ellipse 70% 50% at 50% 100%, rgba(201,168,76,0.05) 0%, transparent 70%)",
+                }}
+            />
 
-        {/* Services Grid */}
-        {
-          services.length === 0 ?
-            <NoData sectionName="services detail" />
-            : <HomepageServicesGrid services={services} />
-        }
-      </div>
-    </section>
-  );
+            {/* Top gold divider */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#c9a84c]/40 to-transparent" />
+
+            <div className="w-full max-w-[1440px] mx-auto px-8 lg:px-16">
+                <HomepageServicesTitle />
+
+                {services.length === 0 ? (
+                    <NoData sectionName="services detail" />
+                ) : (
+                    <HomepageServicesGrid services={services} />
+                )}
+            </div>
+
+            {/* Bottom gold divider */}
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#c9a84c]/30 to-transparent" />
+        </section>
+    );
 };
 
 export default HomepageService;

@@ -1,117 +1,172 @@
 "use client";
 
 import Image from "next/image";
-import {SERVICES_QUERYResult} from "@/sanity/types";
-import {FC} from "react";
+import Link from "next/link";
+import { SERVICES_QUERYResult } from "@/sanity/types";
+import { FC } from "react";
 
 interface FooterProps {
   menuServicesList: SERVICES_QUERYResult;
 }
 
-const Footer: FC<FooterProps> = ({menuServicesList}) => {
+const Footer: FC<FooterProps> = ({ menuServicesList }) => {
+  const year = new Date().getFullYear();
+
   const footerSections = [
     {
       title: "Area of Practices",
-      href: "/area-of-practices",
       links: [
         ...(menuServicesList?.map((service) => ({
           label: service.name ?? "Untitled",
           href: `/practice-areas/${service?.slug?.current}`,
         })) ?? []),
-        { label: "More Practice Areas", href: "/practice-areas" },
+        { label: "More Practice Areas →", href: "/practice-areas", isMore: true },
       ],
     },
     {
       title: "Our Team",
-      href: "/our-teams",
       links: [
-        { label: "Meet our Founder", href: "/our-teams/founder" },
-        { label: "Our Member", href: "/our-teams" },
+        { label: "Meet our Founder", href: "/our-founder" },
+        { label: "Our Member", href: "/team" },
       ],
     },
   ];
 
   const quickLinks = [
-    { title: "About Us", href: "/about" },
-    { title: "Articles", href: "/articles" },
-    { title: "Contact Us", href: "/contact" },
+    { label: "About Us", href: "/about-us" },
+    { label: "Articles", href: "/articles" },
+    { label: "Contact Us", href: "/contact" },
   ];
 
   return (
-      <footer className="bg-gray-100 py-12 lg:py-16 border-t border-black">
-        <div className="container mx-auto w-full px-4 lg:px-24">
-          {/* Desktop Layout - Logo and Quick Links */}
-          <div className="hidden md:flex justify-between mb-12">
-            {/* Logo Column */}
-            <div className="lg:col-span-1">
-              <div className="text-4xl font-bold mb-4 text-red-600">
-                <Image src={`/images/LYDHH-Logo_Light.webp`} alt={"LYDHH"} width={400} height={80} className="w-80 object-contain" />
+      <footer className="relative bg-[#0a0c0f] overflow-hidden">
+        {/* Top gold divider */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
+
+        {/* Subtle radial glow at bottom */}
+        <div
+            className="absolute bottom-0 left-0 right-0 h-72 pointer-events-none"
+            style={{
+              background:
+                  "radial-gradient(ellipse 60% 80% at 50% 100%, rgba(201,168,76,0.04) 0%, transparent 70%)",
+            }}
+        />
+
+        {/* ── Main grid ── */}
+        <div className="relative w-full max-w-[1440px] mx-auto px-8 lg:px-16 pt-16 pb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[300px_1fr_160px_160px] gap-12 lg:gap-16">
+
+            {/* Brand column */}
+            <div className="flex flex-col gap-5">
+              {/* Logo */}
+              <div className="border border-[#c9a84c]/15 bg-[#c9a84c]/[0.04] px-4 py-3 w-fit">
+                <Image
+                    src="/images/LYDHH-Logo_Dark.webp"
+                    alt="LYDHH Law Firm"
+                    width={200}
+                    height={40}
+                    className="h-9 w-auto object-contain"
+                />
               </div>
-              <p className="text-sm text-gray-600">
-                &copy; {new Date().getFullYear()} • Luthfi Yazid DHH Law Firm
+
+              {/* Tagline */}
+              <p className="text-[#6b7785] text-[12.5px] leading-[1.75] max-w-[240px]">
+                A premier Jakarta-based commercial law firm dedicated to providing
+                globally minded, client-focused legal solutions.
+              </p>
+
+              {/* Gold rule */}
+              <div className="w-8 h-px bg-gradient-to-r from-[#c9a84c] to-[#a98e16]" />
+
+              {/* Copyright */}
+              <p className="text-[#4a5568] text-[11px] tracking-[0.06em]">
+                &copy; {year} &bull; Luthfi Yazid DHH Law Firm
               </p>
             </div>
 
-            {/* Sections with Links */}
-            {footerSections.map((section, index) => (
-                <div key={index} className="lg:col-span-1">
-                  <h3 className="font-semibold text-gray-900 mb-4 text-sm">
-                    {section.title}
-                  </h3>
-                  {section.links.length > 0 && (
-                      <ul className="space-y-3">
-                        {section.links.map((link, linkIndex) => (
-                            <li key={linkIndex}>
-                              <a
-                                  href={link.href}
-                                  className="text-sm text-gray-600 hover:text-red-600 transition-colors"
-                              >
-                                {link.label}
-                              </a>
-                            </li>
-                        ))}
-                      </ul>
-                  )}
-                </div>
-            ))}
+            {/* Practice areas */}
+            <div>
+              <h3 className="text-[#c9a84c] text-[10px] tracking-[0.22em] uppercase font-medium mb-5 pb-2.5 border-b border-[#c9a84c]/15">
+                Area of Practices
+              </h3>
+              <ul className="space-y-2.5">
+                {footerSections[0].links.map((link, i) => (
+                    <li key={i}>
+                      <Link
+                          href={link.href}
+                          className={`text-[12.5px] transition-all duration-200 hover:pl-1.5 block ${
+                              "isMore" in link && link.isMore
+                                  ? "text-[#c9a84c]/70 text-[11.5px] mt-3 hover:text-[#c9a84c]"
+                                  : "text-[#8a95a3] hover:text-[#c9a84c]"
+                          }`}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                ))}
+              </ul>
+            </div>
 
-            {/* Quick Links Column (sections without sub-links) */}
-            <div className="lg:col-span-1">
-              <h3 className="font-semibold text-gray-900 mb-4 text-sm">
+            {/* Our Team */}
+            <div>
+              <h3 className="text-[#c9a84c] text-[10px] tracking-[0.22em] uppercase font-medium mb-5 pb-2.5 border-b border-[#c9a84c]/15">
+                Our Team
+              </h3>
+              <ul className="space-y-2.5">
+                {footerSections[1].links.map((link, i) => (
+                    <li key={i}>
+                      <Link
+                          href={link.href}
+                          className="text-[#8a95a3] text-[12.5px] hover:text-[#c9a84c] hover:pl-1.5 transition-all duration-200 block"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-[#c9a84c] text-[10px] tracking-[0.22em] uppercase font-medium mb-5 pb-2.5 border-b border-[#c9a84c]/15">
                 Quick Links
               </h3>
-              <ul className="space-y-3">
-                {quickLinks.map((link, index) => (
-                    <li key={index}>
-                      <a
+              <ul className="space-y-2.5">
+                {quickLinks.map((link, i) => (
+                    <li key={i}>
+                      <Link
                           href={link.href}
-                          className="text-sm text-gray-600 hover:text-red-600 transition-colors"
+                          className="text-[#8a95a3] text-[12.5px] hover:text-[#c9a84c] hover:pl-1.5 transition-all duration-200 block"
                       >
-                        {link.title}
-                      </a>
+                        {link.label}
+                      </Link>
                     </li>
                 ))}
               </ul>
             </div>
           </div>
+        </div>
 
-          {/* Mobile Layout - Logo at top */}
-          <div className="md:hidden mb-8 text-center">
-            <Image src={`/images/LYDHH-Logo_Light.webp`} alt={"LYDHH"} width={400} height={80} className="h-10 object-contain" />
-          </div>
-
-          {/* Copyright and Social Icons - Mobile */}
-          <div className="md:hidden text-center mb-8">
-            <p className="text-sm text-gray-600 mb-6">
-              &copy; {new Date().getFullYear()} • Luthfi Yazid DHH Law Firm
+        {/* ── Bottom bar ── */}
+        <div className="relative border-t border-white/[0.05]">
+          <div className="w-full max-w-[1440px] mx-auto px-8 lg:px-16 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p className="text-[#4a5568] text-[11px] tracking-[0.06em]">
+              &copy; {year} &bull; Luthfi Yazid DHH Law Firm. All rights reserved.
             </p>
-          </div>
-
-          {/* Bottom Disclaimer Text */}
-          <div className="text-left pt-8 border-t border-gray-300">
-            <p className="text-xs text-gray-500 leading-relaxed">
-              &copy; {new Date().getFullYear()} • Luthfi Yazid DHH Law Firm
-            </p>
+            <div className="flex items-center gap-6">
+              <Link
+                  href="/privacy-policy"
+                  className="text-[#4a5568] text-[11px] hover:text-[#c9a84c] transition-colors duration-200"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                  href="/terms"
+                  className="text-[#4a5568] text-[11px] hover:text-[#c9a84c] transition-colors duration-200"
+              >
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
       </footer>

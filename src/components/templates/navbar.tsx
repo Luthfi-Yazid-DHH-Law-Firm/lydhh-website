@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import {FC, useEffect, useState} from "react";
+import { FC, useEffect, useState } from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,19 +10,12 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-// import {
-//   DropdownMenu,
-//   DropdownMenuContent,
-//   DropdownMenuItem,
-//   DropdownMenuTrigger,
-// } from "@/components/ui/dropdown-menu";
-// import { ChevronDown } from "lucide-react";
 import MobileMenu from "./mobile-menu";
 import Image from "next/image";
 import Link from "next/link";
-import {SERVICES_QUERYResult} from "@/sanity/types";
-import {ListItems} from "@/components/composites/list-items";
-import {getPracticeAreaIcon} from "@/assets/icon-mappers";
+import { SERVICES_QUERYResult } from "@/sanity/types";
+import { ListItems } from "@/components/composites/list-items";
+import { getPracticeAreaIcon } from "@/assets/icon-mappers";
 
 interface NavbarProps {
   menuServicesList: SERVICES_QUERYResult;
@@ -31,11 +24,6 @@ interface NavbarProps {
 const Navbar: FC<NavbarProps> = ({ menuServicesList }) => {
   const [menuState] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
-  // const [selectedLanguage, setSelectedLanguage] = useState({
-  //   flag: "🇬🇧",
-  //   code: "EN",
-  //   name: "English"
-  // });
 
   const menuItems = [
     {
@@ -43,20 +31,27 @@ const Navbar: FC<NavbarProps> = ({ menuServicesList }) => {
       label: "Area of Practices",
       hasSubmenu: true,
       submenuContent: (
-          <ul className="grid w-[600px] gap-3 p-4 md:grid-cols-2">
+          <ul className="grid w-[520px] gap-px p-3 md:grid-cols-2 bg-[#c9a84c]/10">
             {menuServicesList?.map((service) => (
                 <ListItems
                     key={service._id}
                     title={service.name}
                     href={`/practice-areas/${service?.slug?.current}`}
-                    icon={getPracticeAreaIcon(service.name)}  // ← add this
+                    icon={getPracticeAreaIcon(service.name)}
                 >
                   {`Learn more about ${service.name}.`}
                 </ListItems>
             ))}
-              <ListItems title={"More Practice Areas"} href={"/practice-areas"} icon={getPracticeAreaIcon("More Practice Areas")}>
-                  Explore all our practice areas.
-              </ListItems>
+            {/* "More" item spanning full width — ListItems renders its own <li> */}
+            <ListItems
+                title="More Practice Areas"
+                href="/practice-areas"
+                icon={getPracticeAreaIcon("More Practice Areas")}
+                isMore
+                liClassName="col-span-2"
+            >
+              Explore all our practice areas.
+            </ListItems>
           </ul>
       ),
     },
@@ -65,12 +60,20 @@ const Navbar: FC<NavbarProps> = ({ menuServicesList }) => {
       label: "Our Team",
       hasSubmenu: true,
       submenuContent: (
-          <ul className="grid w-[600px] gap-3 p-4 md:grid-cols-2">
-            <ListItems title={"Our Founder"} href={"/our-founder"} icon={getPracticeAreaIcon("Our Founder")}>
-                Learn more about our founder.
+          <ul className="grid w-[400px] gap-px p-3 md:grid-cols-2 bg-[#c9a84c]/10">
+            <ListItems
+                title="Our Founder"
+                href="/our-founder"
+                icon={getPracticeAreaIcon("Our Founder")}
+            >
+              Learn more about our founder.
             </ListItems>
-            <ListItems title={"Our Members"} href={"/team"} icon={getPracticeAreaIcon("Our Members")}>
-                Learn more about our team member.
+            <ListItems
+                title="Our Members"
+                href="/team"
+                icon={getPracticeAreaIcon("Our Members")}
+            >
+              Learn more about our team members.
             </ListItems>
           </ul>
       ),
@@ -89,74 +92,85 @@ const Navbar: FC<NavbarProps> = ({ menuServicesList }) => {
     },
   ];
 
-  // const languages = [
-  //   { flag: "🇬🇧", code: "EN", name: "English" },
-  //   { flag: "🇨🇳", code: "中国人", name: "中国人" },
-  //   { flag: "🇮🇩", code: "Bahasa", name: "Bahasa" }
-  // ];
-
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // const handleLanguageSelect = (language: typeof languages[0]) => {
-  //   setSelectedLanguage(language);
-  // };
+  // Shared link class builder
+  const linkClass = cn(
+      "text-[12.5px] font-normal tracking-[0.04em] transition-colors duration-200",
+      isScrolled ? "text-[#8a95a3] hover:text-[#c9a84c]" : "text-white/85 hover:text-[#c9a84c]"
+  );
+
+  const triggerClass = cn(
+      "bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[active]:bg-transparent",
+      "text-[12.5px] font-normal tracking-[0.04em] transition-colors duration-200",
+      isScrolled
+          ? "text-[#8a95a3] hover:text-[#c9a84c] data-[state=open]:text-[#c9a84c] [&>svg]:text-[#4a5568] hover:[&>svg]:text-[#c9a84c]"
+          : "text-white/85 hover:text-[#c9a84c] data-[state=open]:text-[#c9a84c] [&>svg]:text-white/40 hover:[&>svg]:text-[#c9a84c]"
+  );
 
   return (
       <header>
-        <nav data-state={menuState && "active"} className="fixed z-20 w-full">
+        <nav
+            data-state={menuState && "active"}
+            className="fixed z-20 w-full"
+        >
           <div
               className={cn(
-                  "w-full px-4 lg:px-24 transition-all duration-300 max-lg:bg-white h-16 lg:h-[88px] max-lg:py-0 pt-11 pb-5 flex justify-center items-center",
-                  isScrolled && "bg-white h-16 py-0 shadow-sm"
+                  "w-full px-8 lg:px-16 transition-all duration-300 flex justify-center items-center",
+                  // Transparent state
+                  "max-lg:bg-[#0a0c0f] max-lg:h-16",
+                  // Desktop transparent
+                  "lg:pt-7 lg:pb-5 lg:h-auto",
+                  // Scrolled overrides
+                  isScrolled && [
+                    "!bg-[#0a0c0f] !h-16 !py-0",
+                    "border-b border-[#c9a84c]/12",
+                    "shadow-[0_2px_24px_rgba(0,0,0,0.3)]",
+                  ]
               )}
           >
-            <div className="w-full container flex items-center">
-              {/* Logo - Left side with fixed width */}
+            <div className="w-full max-w-[1440px] flex items-center">
+              {/* Logo */}
               <Link href="/" className="flex-1">
                 <Image
-                    src={`/images/LYDHH-Logo_${isScrolled ? "Light" : "Dark"}.webp`}
-                    alt={"LYDHH"}
+                    src="/images/LYDHH-Logo_Dark.webp"
+                    alt="LYDHH"
                     width={400}
                     height={80}
-                    className="w-64 object-contain hidden lg:block"
+                    className="w-56 object-contain hidden lg:block"
                 />
                 <Image
-                    src="/images/LYDHH-Logo_Light.webp"
-                    alt={"LYDHH"}
+                    src="/images/LYDHH-Logo_Dark.webp"
+                    alt="LYDHH"
                     width={400}
                     height={80}
-                    className="w-52 object-contain lg:hidden"
+                    className="w-44 object-contain lg:hidden"
                 />
               </Link>
 
-              {/* Navigation Menu - Center */}
+              {/* Desktop nav links */}
               <div className="hidden lg:flex shrink-0">
                 <NavigationMenu>
-                  <NavigationMenuList className={"gap-1"}>
+                  <NavigationMenuList className="gap-0">
                     {menuItems.map((item) => (
-                        <NavigationMenuItem key={item.id} >
+                        <NavigationMenuItem key={item.id}>
                           {item.hasSubmenu ? (
                               <>
-                                <NavigationMenuTrigger
-                                    className={`bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[active]:bg-transparent focus:bg-transparent ${isScrolled ? "text-gray-700 [&>svg]:text-gray-700" : "text-white [&>svg]:text-white"} hover:text-red-600 hover:[&>svg]:text-red-600 hover:bg-transparent`}>
-                            <span className={`text-sm font-medium ${isScrolled ? "text-gray-700" : "text-white"} hover:text-red-600`}>
-                              {item.label}
-                            </span>
+                                <NavigationMenuTrigger className={triggerClass}>
+                                  {item.label}
                                 </NavigationMenuTrigger>
-                                <NavigationMenuContent>
+                                <NavigationMenuContent className="!bg-[#0d1117] border border-[#c9a84c]/12 box-shadow">
                                   {item.submenuContent}
                                 </NavigationMenuContent>
                               </>
                           ) : (
                               <NavigationMenuLink
                                   href={item.href}
-                                  className={`bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[active]:bg-transparent focus:bg-transparent ${isScrolled ? "text-gray-700" : "text-white"} hover:text-red-600 px-3 font-medium`}
+                                  className={cn(linkClass, "px-4 py-2")}
                               >
                                 {item.label}
                               </NavigationMenuLink>
@@ -167,36 +181,22 @@ const Navbar: FC<NavbarProps> = ({ menuServicesList }) => {
                 </NavigationMenu>
               </div>
 
-              {/* Right side - Contact Us, Language */}
-              <div className="flex-1 hidden lg:flex items-center justify-end gap-6">
-                <a
+              {/* Right: Contact Us CTA */}
+              <div className="flex-1 hidden lg:flex items-center justify-end">
+                <Link
                     href="/contact"
-                    className={`text-sm font-medium ${isScrolled ? "text-gray-700" : "text-white"} hover:text-red-600`}
+                    className={cn(
+                        "text-[12px] font-medium tracking-[0.08em] px-5 py-2 border transition-all duration-200",
+                        isScrolled
+                            ? "text-[#c9a84c] border-[#c9a84c]/35 bg-[#c9a84c]/[0.05] hover:bg-[#c9a84c]/12 hover:border-[#c9a84c]/60"
+                            : "text-[#c9a84c] border-[#c9a84c]/40 bg-[#c9a84c]/[0.06] hover:bg-[#c9a84c]/14 hover:border-[#c9a84c]/70"
+                    )}
                 >
                   Contact Us
-                </a>
-
-                {/* Language Dropdown */}
-                {/*<DropdownMenu>*/}
-                {/*  <DropdownMenuTrigger className={`flex items-center gap-1 text-sm font-medium ${isScrolled ? "text-gray-700" : "text-white"} hover:text-red-600 outline-none`}>*/}
-                {/*    <span className="text-lg">{selectedLanguage.flag}</span>*/}
-                {/*    <span>{selectedLanguage.code}</span>*/}
-                {/*    <ChevronDown className="w-4 h-4" />*/}
-                {/*  </DropdownMenuTrigger>*/}
-                {/*  <DropdownMenuContent align="center" className="w-48 bg-white">*/}
-                {/*    {languages.map((language, index) => (*/}
-                {/*        <DropdownMenuItem*/}
-                {/*            key={index}*/}
-                {/*            onClick={() => handleLanguageSelect(language)}*/}
-                {/*            className="flex items-center gap-3 cursor-pointer"*/}
-                {/*        >*/}
-                {/*          <span className="text-lg">{language.flag}</span>*/}
-                {/*          <span>{language.name}</span>*/}
-                {/*        </DropdownMenuItem>*/}
-                {/*    ))}*/}
-                {/*  </DropdownMenuContent>*/}
-                {/*</DropdownMenu>*/}
+                </Link>
               </div>
+
+              {/* Mobile menu */}
               <MobileMenu menuServicesList={menuServicesList} />
             </div>
           </div>
