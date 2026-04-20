@@ -23,7 +23,7 @@ export const CustomerNotifEmail = ({
                                    }: CustomerNotifEmailProps) => (
     <Html>
       <Head />
-      <Preview>We've received your message — here's your reference number.</Preview>
+      <Preview>We&#39;ve received your message — here&#39;s your reference number.</Preview>
       <Tailwind>
         <Body className="bg-[#e8e4de] my-auto mx-auto font-sans px-4">
           <Container className="my-[40px] mx-auto max-w-[480px]">
