@@ -88,7 +88,7 @@ const FounderCard: FC<FounderCardProps> = ({ founder, variant = "dark" }) => {
                 {/* Name + bio */}
                 <div className="mt-auto">
                     <p className="text-[#c9a84c] text-[9.5px] tracking-[0.18em] uppercase font-medium mb-2">
-                        Senior Partner
+                        Managing Partner
                     </p>
                     <h3 className={`text-[17px] font-medium leading-snug mb-3 ${v.name}`}>
                         {name}
