@@ -8,21 +8,11 @@ const cards = [
         tagline: "Dispute Resolution",
         title: "Arbitration & ADR",
         icon: (
-            <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#c9a84c"
-                strokeWidth="1.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
         ),
-        intro:
-            "Recognizing the need for efficient and confidential conflict management, LYDHH offers specialized expertise in resolving disputes outside traditional litigation.",
+        intro: "Recognizing the need for efficient and confidential conflict management, LYDHH offers specialized expertise in resolving disputes outside traditional litigation.",
         items: [
             {
                 label: "Arbitration",
@@ -39,23 +29,13 @@ const cards = [
         tagline: "Institutional Navigation",
         title: "Strategic Advocacy & Relations",
         icon: (
-            <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#c9a84c"
-                strokeWidth="1.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="2" y1="12" x2="22" y2="12" />
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
             </svg>
         ),
-        intro:
-            "Beyond traditional legal counsel, we help clients navigate Indonesia's broader institutional environment through targeted strategic engagement.",
+        intro: "Beyond traditional legal counsel, we help clients navigate Indonesia's broader institutional environment through targeted strategic engagement.",
         items: [
             {
                 label: "Parliamentary & Government Relations",
@@ -68,6 +48,32 @@ const cards = [
             {
                 label: "Media Relations",
                 desc: "Managing legal-related public communications and reputation management for accurate representation in the public sphere.",
+            },
+        ],
+    },
+    {
+        number: "03",
+        tagline: "Knowledge & Insight",
+        title: "Curator",
+        icon: (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+        ),
+        intro: "LYDHH stays at the forefront of legal developments and shares that knowledge with our clients through curated publications and thought leadership.",
+        items: [
+            {
+                label: "Notes from the Bar",
+                desc: "Our monthly newsletter delivering curated legal insights on Indonesian and international developments directly to our clients.",
+            },
+            {
+                label: "Legal Commentary",
+                desc: "In-depth analysis of emerging regulations, landmark rulings, and policy shifts that may affect your business interests.",
+            },
+            {
+                label: "Client Briefings",
+                desc: "Tailored updates prepared for specific industries or matters, ensuring our clients are always informed and prepared.",
             },
         ],
     },
@@ -92,28 +98,19 @@ export default function BeyondTheCourtroom() {
     }, []);
 
     return (
-        <section
-            ref={sectionRef}
-            className="relative py-20 overflow-hidden"
-        >
+        <section ref={sectionRef} className="relative py-20 overflow-hidden">
             {/* Top divider */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#c9a84c]/40 to-transparent" />
 
             <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
                 {/* Header */}
-                <div
-                    className={`text-center mb-12 transition-all duration-700 ${
-                        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                    }`}
-                >
+                <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
                     <p className="text-[#c9a84c] text-xs tracking-[0.24em] uppercase font-medium mb-3">
                         Full-Spectrum Capabilities
                     </p>
                     <h2 className="text-[#0d1117] text-4xl lg:text-5xl font-light mb-3 leading-tight">
                         Beyond{" "}
-                        <span className="italic text-[#c9a84c] font-serif">
-              the Courtroom
-            </span>
+                        <span className="italic text-[#c9a84c] font-serif">the Courtroom</span>
                     </h2>
                     <div className="flex justify-center mb-5">
                         <div className="w-11 h-0.5 bg-[#c9a84c]" />
@@ -124,16 +121,17 @@ export default function BeyondTheCourtroom() {
                     </p>
                 </div>
 
-                {/* Cards grid */}
-                <div className="grid lg:grid-cols-2 gap-5">
+                {/* Cards grid — 3 columns on large screens */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {cards.map((card, i) => (
                         <div
                             key={i}
                             className={`
-                group relative bg-white p-10 border border-black/[0.08]
-                hover:border-[#c9a84c]/40 hover:shadow-[0_4px_24px_rgba(201,168,76,0.08)] transition-all duration-500
-                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
-              `}
+                                group relative bg-white p-10 border border-black/[0.08]
+                                hover:border-[#c9a84c]/40 hover:shadow-[0_4px_24px_rgba(201,168,76,0.08)]
+                                transition-all duration-500
+                                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
+                            `}
                             style={{ transitionDelay: isVisible ? `${i * 150 + 200}ms` : "0ms" }}
                         >
                             {/* Top hover line */}
@@ -141,11 +139,11 @@ export default function BeyondTheCourtroom() {
 
                             {/* Background number */}
                             <span className="absolute top-7 right-8 font-serif text-[64px] leading-none text-[#c9a84c]/10 select-none pointer-events-none">
-                {card.number}
-              </span>
+                                {card.number}
+                            </span>
 
                             {/* Icon box */}
-                            <div className="w-11 h-11 border border-[#c9a84c]/40 bg-[#c9a84c]/7 flex items-center justify-center mb-6">
+                            <div className="w-11 h-11 border border-[#c9a84c]/40 bg-[#c9a84c]/[0.07] flex items-center justify-center mb-6">
                                 {card.icon}
                             </div>
 
@@ -163,7 +161,7 @@ export default function BeyondTheCourtroom() {
                             </p>
 
                             {/* Divider */}
-                            <div className="h-px bg-black/7 mb-6" />
+                            <div className="h-px bg-black/[0.07] mb-6" />
 
                             {/* Items */}
                             <div className="space-y-5">
