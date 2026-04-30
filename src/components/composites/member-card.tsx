@@ -35,7 +35,7 @@ const MemberCard: FC<MemberCardProps> = ({
   const image = member?.image ?? founder?.secondImage;
   const altText = member?.name ?? founder?.name ?? "";
   const name = member?.name ?? founder?.name ?? "";
-  const position = member?.position ?? "Founder";
+  const position = member?.position ?? "Founder/Managing Partner";
   const memberRoute = member
       ? `/team/${member?.slug?.current}`
       : "/our-founder";
